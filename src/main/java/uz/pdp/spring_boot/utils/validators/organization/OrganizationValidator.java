@@ -6,6 +6,7 @@ import uz.pdp.spring_boot.dto.organization.OrganizationCreateDto;
 import uz.pdp.spring_boot.dto.organization.OrganizationUpdateDto;
 import uz.pdp.spring_boot.exceptions.ValidationException;
 import uz.pdp.spring_boot.utils.BaseUtils;
+import uz.pdp.spring_boot.utils.validators.AbstractValidator;
 
 @Component
 public class OrganizationValidator extends AbstractValidator<OrganizationCreateDto, OrganizationUpdateDto, Long> {

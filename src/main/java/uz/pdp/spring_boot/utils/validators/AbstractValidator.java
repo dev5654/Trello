@@ -1,4 +1,4 @@
-package uz.pdp.spring_boot.utils.validators.organization;
+package uz.pdp.spring_boot.utils.validators;
 
 import uz.pdp.spring_boot.exceptions.ValidationException;
 import uz.pdp.spring_boot.utils.BaseUtils;

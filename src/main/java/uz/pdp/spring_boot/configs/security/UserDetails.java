@@ -1,5 +1,9 @@
 package uz.pdp.spring_boot.configs.security;
 
+import lombok.Getter;
+import lombok.Setter;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import uz.pdp.spring_boot.entity.auth.AuthPermission;
@@ -12,6 +16,8 @@ import java.util.stream.Collectors;
 /**
  * @author Nodirbek Abdukarimov Mon. 9:08 PM. 2/21/2022
  */
+
+
 
 public class UserDetails implements org.springframework.security.core.userdetails.UserDetails {
 

@@ -48,7 +48,7 @@ public class OrganizationServiceImpl extends AbstractService<OrganizationReposit
 
     @Override
     public Void update(OrganizationUpdateDto updateDto) {
-        repository.update(updateDto.getName(), updateDto.getEmail(), updateDto.getCode(), updateDto.getId());
+        repository.update( updateDto.getName(), updateDto.getEmail(), updateDto.getCode(), updateDto.getId());
         return null;
     }
 

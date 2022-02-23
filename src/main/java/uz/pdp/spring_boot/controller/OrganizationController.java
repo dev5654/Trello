@@ -29,6 +29,13 @@ public class OrganizationController extends AbstractController<OrganizationServi
         return "organization/create";
     }
 
+
+    @RequestMapping(value = "organization/", method = RequestMethod.GET)
+    public String orgPage(Model model) {
+        return "organization/organization";
+    }
+
+
     @PreAuthorize("hasAnyRole('ADMIN')")
     @RequestMapping(value = "create/", method = RequestMethod.POST)
     public String create(@ModelAttribute OrganizationCreateDto dto) {
@@ -69,7 +76,7 @@ public class OrganizationController extends AbstractController<OrganizationServi
         return "organization/detail";
     }
 
-    @RequestMapping(value = "", method = RequestMethod.GET)
+    @RequestMapping(value = "list/", method = RequestMethod.GET)
     public String listPage(Model model) {
         model.addAttribute("organizations", service.getAll(new GenericCriteria()));
         return "organization/list";

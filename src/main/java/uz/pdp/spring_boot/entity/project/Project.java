@@ -2,6 +2,7 @@ package uz.pdp.spring_boot.entity.project;
 
 import lombok.Getter;
 import lombok.Setter;
+import uz.pdp.spring_boot.entity.BaseEntity;
 import uz.pdp.spring_boot.entity.organization.Organization;
 
 import javax.persistence.*;
@@ -10,7 +11,7 @@ import java.time.Instant;
 @Setter
 @Entity
 @Table(name = "project", schema = "project")
-public class Project {
+public class Project implements BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
