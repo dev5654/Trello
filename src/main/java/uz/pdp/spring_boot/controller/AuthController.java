@@ -23,4 +23,9 @@ public class AuthController {
     }
 
 
+    @RequestMapping(value = "register", method = RequestMethod.GET)
+    public String registerPage() {
+        return "auth/register";
+    }
+
 }

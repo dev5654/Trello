@@ -3,8 +3,7 @@
     <title th:text="${title}"></title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
           integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
-
-    <link rel="stylesheet" th:href="@{/static/css/main.css}">
+    <link rel="stylesheet" th:href="@{/static/css/index.css}">
 </section>
 
 <section th:fragment="js">
@@ -19,6 +18,32 @@
             crossorigin="anonymous"></script>
 </section>
 
+
+<!--<section th:fragment="navbar">-->
+<!--    <nav>-->
+<!--        <div class="input">-->
+<!--            <div>-->
+<!--                <i class="fas fa-search"></i>-->
+<!--            </div>-->
+
+<!--            <input type="text" placeholder="Search">-->
+<!--        </div>-->
+
+<!--        <div class="user-information">-->
+<!--            <div class="icon">-->
+<!--                <img src="/static/images/bell.png" alt="">-->
+<!--                <i class="far fa-envelope"></i>-->
+<!--            </div>-->
+
+<!--            <div class="user">-->
+<!--                <img src="/static/images/useer.png" alt="">-->
+<!--                <p>Azhar I.-->
+<!--                    <i class="fas fa-angle-down"></i>-->
+<!--                </p>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </nav>-->
+<!--</section>-->
 <section th:fragment="navbar">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" th:href="@{/}">TaskManager</a>
@@ -58,3 +83,4 @@
         </div>
     </nav>
 </section>
+

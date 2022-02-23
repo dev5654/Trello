@@ -4,19 +4,15 @@
   box-sizing: border-box;
 }
 
-body {
-  overflow-y: hidden;
-}
-
 .container {
   width: 544px;
-  height: 535px;
-  padding: 50px 55px;
+  height: 100%;
+  padding: 20px 55px;
   display: block;
-  margin: 100px auto;
+  margin: 30px auto;
   text-align: center;
   background: #ffffff;
-  box-shadow: 0px 0px 25px 10px #f8f8fb;
+  box-shadow: 0px 0px 25px 10px #f9f9f3;
 }
 
 .goBack {
@@ -76,45 +72,15 @@ body {
   color: #9096b2;
 }
 
-.password {
-  position: relative;
-  top: 0;
-  left: 0;
-}
-
-.password i {
-  position: absolute;
-  top: 20px;
-  right: 30px;
-}
-
-.forgot {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+.login-input p {
   font-family: Josefin Sans;
   font-style: normal;
   font-weight: normal;
   font-size: 17px;
   line-height: 20px;
   color: #9096b2;
-}
-
-.forgot p {
   margin: 13px 0 23px 0;
   text-align: left;
-}
-
-.forgot div {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-.forgot input {
-  margin: 0;
-  width: 18px;
-  height: 18px;
 }
 
 .login-button button {
@@ -139,10 +105,10 @@ body {
   margin-top: 28px;
 }
 
-@media (max-width: 576px) {
+@media (max-width: 586px) {
   .container {
-    padding: 0;
-    width: 300px;
+    width: 350px;
+    padding: 55px 10px;
   }
   .login-input input {
     width: 100%;

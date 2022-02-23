@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--    <link rel="stylesheet" th:href="@{/static/css/login.css}">-->
     <title>Login</title>
     <style>
         * {
@@ -170,91 +171,59 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 
-<!--<body>-->
-<!--<div class="container">-->
-<!--    <div class="goBack" id="link">-->
-<!--        <a href="#">Back</a>-->
-<!--        <a href="#">Register</a>-->
-<!--    </div>-->
-<!--    <div class="login-text">-->
-<!--        <h3>Login</h3>-->
-<!--        <p>Please login using account detail bellow.</p>-->
-<!--    </div>-->
-
-<!--    <form th:action="@{/auth/login}" th:method="post" onsubmit="validate()">-->
-<!--        <div class="login-input">-->
-<!--            <input type="text" placeholder="Username">-->
-<!--            <div class="password">-->
-<!--                <i class="fas"></i>-->
-<!--                <input type="password" placeholder="Password" class="InputPassword">-->
-<!--            </div>-->
-
-<!--            <div class="forgot">-->
-<!--                <p>Forgot your password?</p>-->
-<!--                <div>-->
-<!--                    <label>Remember Me</label>-->
-<!--                    <input type="checkbox">-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-
-<!--        <div class="login-button">-->
-<!--            <button type="submit">Sign In</button>-->
-<!--            <p>Don’t have an Account?Create account</p>-->
-<!--        </div>-->
-<!--    </form>-->
-<!--</div>-->
-
-<!--<script>-->
-<!--    const passwordEye = document.querySelector(".fas")-->
-<!--    const InputPassword = document.querySelector(".InputPassword")-->
-
-<!--    passwordEye.addEventListener('click', function () {-->
-<!--        passwordEye.classList.toggle("fa-eye-slash")-->
-<!--        passwordEye.classList.add("fa-eye")-->
-
-<!--        if (passwordEye.classList.value != "fas fa-eye fa-eye-slash") {-->
-<!--            console.log("fa-eye")-->
-<!--            InputPassword.type = "text"-->
-
-<!--        } else {-->
-<!--            InputPassword.type = "password"-->
-<!--        }-->
-
-<!--    })-->
-<!--    passwordEye.classList.add("fa-eye-slash")-->
-
-<!--</script>-->
-<!--</body>-->
 <body>
 <div class="container">
-    <div class="row">
-        <div class="col-md-6 offset-3">
-            <form name="f" th:action="@{/auth/login}" th:method="post" onsubmit="validate()">
-
-                <div class="form-group">
-                    <label for="username">Username</label>
-                    <input type="text" class="form-control" id="username" name="username" placeholder="username">
-                </div>
-
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" class="form-control" id="password" name="password" placeholder="password">
-                </div>
-
-                <div class="form-group">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="gridCheck" name="remember-me">
-                        <label class="form-check-label" for="gridCheck">
-                            Remember me ?
-                        </label>
-                    </div>
-                </div>
-
-                <button type="submit" class="btn btn-primary">Login</button>
-            </form>
-        </div>
+    <div class="goBack" id="link">
+        <a th:href="@{/}">Back</a>
+        <a th:href="@{/auth/register}">Register</a>
     </div>
+    <div class="login-text">
+        <h3>Login</h3>
+        <p>Please login using account detail bellow.</p>
+    </div>
+
+    <form name="f" th:action="@{/auth/login}" th:method="post">
+        <div class="login-input">
+            <input type="text" placeholder="Username" name="username">
+            <div class="password">
+                <i class="fas"></i>
+                <input type="password" placeholder="Password" class="InputPassword" name="password">
+            </div>
+
+            <div class="forgot">
+                <p>Forgot your password?</p>
+                <div>
+                    <label>Remember Me</label>
+                    <input type="checkbox" name="remember-me">
+                </div>
+            </div>
+        </div>
+
+        <div class="login-button">
+            <button type="submit">Sign In</button>
+            <p>Don’t have an Account?Create account</p>
+        </div>
+    </form>
 </div>
+
+<script>
+    const passwordEye = document.querySelector(".fas")
+    const InputPassword = document.querySelector(".InputPassword")
+
+    passwordEye.addEventListener('click', function () {
+        passwordEye.classList.toggle("fa-eye-slash")
+        passwordEye.classList.add("fa-eye")
+
+        if (passwordEye.classList.value != "fas fa-eye fa-eye-slash") {
+            console.log("fa-eye")
+            InputPassword.type = "text"
+
+        } else {
+            InputPassword.type = "password"
+        }
+    })
+    passwordEye.classList.add("fa-eye-slash")
+
+</script>
 </body>
 </html>
