@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log out</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;500;600;700&family=Red+Hat+Display&display=swap"
+        rel="stylesheet">
+
+        <link rel="stylesheet" href="./assets/css/logout.css">
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-3">
+            <figure class="figure">
+                <form th:action="@{/auth/logout}" th:method="post">
+                    <a th:href="@{/}" class="btn btn-warning active">No</a>
+                    <button type="submit" class="btn btn-danger">Yes</button>
+                </form>
+            </figure>
+        </div>
+    </div>
+</div>
+</body>
+</html>
