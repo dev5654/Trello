@@ -1,7 +1,12 @@
 package uz.pdp.spring_boot.entity.project;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "project_member", schema = "project")
 public class ProjectMember {
@@ -20,35 +25,5 @@ public class ProjectMember {
     @Column(name = "is_lead")
     private Boolean isLead;
 
-    public Boolean getIsLead() {
-        return isLead;
-    }
 
-    public void setIsLead(Boolean isLead) {
-        this.isLead = isLead;
-    }
-
-    public Long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
-
-    public Project getProject() {
-        return project;
-    }
-
-    public void setProject(Project project) {
-        this.project = project;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 }

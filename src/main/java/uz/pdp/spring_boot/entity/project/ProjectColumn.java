@@ -6,30 +6,31 @@ import uz.pdp.spring_boot.entity.organization.Organization;
 
 import javax.persistence.*;
 import java.time.Instant;
-@Getter
+
 @Setter
+@Getter
 @Entity
-@Table(name = "project", schema = "project")
-public class Project {
+@Table(name = "project_column", schema = "project")
+public class ProjectColumn {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Lob
+
+
     @Column(name = "name")
     private String name;
 
-    @Lob
-    @Column(name = "tz_path")
-    private String tzPath;
+    @Column(name = "orders")
+    private Integer orders;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "organization_id")
-    private Organization organization;
+    @JoinColumn(name = "project_id" , referencedColumnName = "id")
+    private Project project;
 
-    @Column(name = "closed")
-    private Boolean closed;
+    @Column(name = "is_deleted")
+    private Boolean isDeleted;
 
     @Convert(disableConversion = true)
     @Column(name = "createdat")

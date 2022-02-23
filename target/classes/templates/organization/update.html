@@ -1,17 +1,54 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:include="fragments.html :: header('Organization Update Page')">
+<head th:include="fragments.html :: header('Organization Create Page')">
 </head>
 <body>
 <header>
-  <section th:include="fragments.html :: navbar"></section>
+    <section th:include="fragments.html :: navbar"></section>
 </header>
 <main>
-  <h1>Update Organization Page</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-10 mx-auto">
+                <form th:action="@{/organization/update}" th:method="post" th:object="${organization}">
+                    <div class="form-group">
+                        <input class="form-control" type="hidden" id="id" name="id" th:value="${organization.getId()}"/>
+                        <span style="color: red" th:errors="*{id}"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" id="name" name="name"
+                               th:value="${organization.getName}"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="logo">Logo</label>
+                        <input type="file" class="form-control" id="logo" name="logo"/>
+                    </div>
+
+                    <div class=" form-group">
+                        <label for="code">Code</label>
+                        <input type="text" class="form-control" id="code" name="code"
+                               th:value="${organization.getCode()}"/>
+                    </div>
+
+                    <div class=" form-group">
+                        <label for="email">Email address</label>
+                        <input type="email" class="form-control" name="email" id="email"
+                               th:value="${organization.getEmail()}"/>
+                    </div>
+
+                    <div class="form-group">
+                        <input class="form-control" type="submit" value="save"
+                               th:action="@{/organization/update/{id}(id=${organization.id})}"/>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </main>
 <footer>
-  <section th:include="fragments.html :: js"></section>
+    <section th:include="fragments.html :: js"></section>
 </footer>
 </body>
 </html>
-

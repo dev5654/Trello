@@ -12,7 +12,7 @@ import uz.pdp.spring_boot.entity.organization.Organization;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-02-23T12:25:33+0500",
+    date = "2022-02-23T12:39:58+0500",
     comments = "version: 1.4.2.Final, compiler: javac, environment: Java 17.0.1 (Oracle Corporation)"
 )
 @Component

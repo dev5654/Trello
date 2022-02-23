@@ -3,6 +3,7 @@ package uz.pdp.spring_boot.entity.auth;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import uz.pdp.spring_boot.entity.organization.Organization;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -30,6 +31,11 @@ public class AuthUser {
     @Column(nullable = false)
     private String language;
 
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "organization_id")
+    private Organization organization;
+
     private String phone;
 
     private String email;
@@ -42,8 +48,6 @@ public class AuthUser {
 
     private Timestamp created_at;
 
-    @Column(name = "is_super_admin")
-    private boolean is_super_admin;
 
     @Column(name = "is_active", nullable = false)
     private boolean active;
