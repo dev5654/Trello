@@ -23,7 +23,8 @@
             <tbody>
             <tr th:each="organization,iter :  ${organizations}">
                 <th th:text="${iter.count}"></th>
-                <th><img th:src="@{${organization.logo}}" style="width: 50px;height: 50px; border-radius: 50%;border: 2px solid red"/></th>
+                <th><img th:src="@{${organization.logo}}"
+                         style="width: 50px;height: 50px; border-radius: 50%;border: 2px solid red"/></th>
                 <th th:text="${organization.name}"></th>
                 <th th:text="${organization.email}"></th>
                 <th th:text="${organization.code}"></th>
@@ -32,6 +33,8 @@
                     <a href="#">🔐</a>
                     <a href="#">🔓</a>
                     <a th:href="@{/organization/delete/{id}/(id=${organization.id})}">🗑</a>
+                    <a th:href="@{/organization/update/{id}/(id=${organization.id})}">🔄</a>
+
                 </th>
             </tr>
             </tbody>

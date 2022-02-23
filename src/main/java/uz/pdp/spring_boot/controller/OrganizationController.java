@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import uz.pdp.spring_boot.criteria.GenericCriteria;
 import uz.pdp.spring_boot.dto.organization.OrganizationCreateDto;
+import uz.pdp.spring_boot.dto.organization.OrganizationUpdateDto;
 import uz.pdp.spring_boot.services.organization.OrganizationService;
 
 @Controller
@@ -50,14 +51,17 @@ public class OrganizationController extends AbstractController<OrganizationServi
 
 
     @RequestMapping(value = "update/{id}/", method = RequestMethod.GET)
-    public String updatePage(@PathVariable Long id) {
+    public String updatePage(Model model, @PathVariable Long id) {
+        model.addAttribute("organization", service.get(id));
         return "organization/update";
     }
 
-    @RequestMapping(value = "update/", method = RequestMethod.PATCH)
-    public String update() {
-        return "redirect:/";
+    @RequestMapping(value = "update", method = RequestMethod.POST)
+    public String update(@ModelAttribute OrganizationUpdateDto dto) {
+        service.update(dto);
+        return "redirect:/organization/list";
     }
+
 
     @RequestMapping("detail/{id}/")
     public String detail(Model model, @PathVariable(name = "id") Long id) {

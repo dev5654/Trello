@@ -9,7 +9,7 @@ import uz.pdp.spring_boot.dto.organization.OrganizationDto;
 import uz.pdp.spring_boot.dto.organization.OrganizationUpdateDto;
 import uz.pdp.spring_boot.entity.organization.Organization;
 import uz.pdp.spring_boot.mapper.OrganizationMapper;
-import uz.pdp.spring_boot.reposiroty.OrganizationRepository;
+import uz.pdp.spring_boot.reposiroty.organization.OrganizationRepository;
 import uz.pdp.spring_boot.services.AbstractService;
 import uz.pdp.spring_boot.services.organization.file.FileStorageService;
 import uz.pdp.spring_boot.utils.BaseUtils;
@@ -48,6 +48,7 @@ public class OrganizationServiceImpl extends AbstractService<OrganizationReposit
 
     @Override
     public Void update(OrganizationUpdateDto updateDto) {
+        repository.update(updateDto.getName(), updateDto.getEmail(), updateDto.getCode(), updateDto.getId());
         return null;
     }
 
