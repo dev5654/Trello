@@ -342,7 +342,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;500;600;700&family=Red+Hat+Display&family=Rubik:wght@400;500;600;700&display=swap"
           rel="stylesheet">
-
 </head>
 <body>
 <header>
@@ -388,12 +387,53 @@
         </nav>
 
         <div class="container">
-            <!-- yozamiz-->
-            <div class="contents">
-                <a th:href="@{/organization/create/}" class="btn btn-success">Create Organization</a>
-                <a th:href="@{/organization/list/}" class="btn btn-success">Create update</a>
-                <a th:href="@{/organization/list/}" class="btn btn-success">Create list</a>
-                <a th:href="@{/organization/list/}" class="btn btn-success">Create delete</a>
+            <div class="row">
+                <div class="col-10 mx-auto">
+                    <form th:action="@{/admin/create/}" th:method="post" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="name">User Name</label>
+                            <input type="text" class="form-control" id="name" name="username"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control" id="password" name="password"/>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="logo">profile image</label>
+                            <input type="file" class="form-control" id="logo" name="profileImage"/>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Phone</label>
+                            <input type="text" class="form-control" id="phone" name="phone"/>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email address</label>
+                            <input type="email" class="form-control" name="email" id="email"/>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="language">Language</label>
+                            <select id="language" name="language" class="form-control">
+                                <option>UZ</option>
+                                <option>RU</option>
+                                <option>EN</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="role">Language</label>
+                            <select id="role" name="role" class="form-control">
+                                <option value="1">SUPER_ADMIN</option>
+                                <option value="2">ADMIN</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">➕ Save</button>
+                    </form>
+                </div>
             </div>
         </div>
     </aside>
@@ -409,3 +449,4 @@
 </script>
 </body>
 </html>
+

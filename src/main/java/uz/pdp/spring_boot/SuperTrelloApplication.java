@@ -38,8 +38,8 @@ public class SuperTrelloApplication /*implements CommandLineRunner*/ {
         admin.setLanguage("EN");*/
 
         AuthUser admin1 = new AuthUser();
-        admin1.setUsername("admin1");
-        admin1.setPassword(passwordEncoder.encode("111"));
+        admin1.setUsername("admin");
+        admin1.setPassword(passwordEncoder.encode("123"));
         admin1.setActive(true);
         admin1.setBlocked(false);
         admin1.setLanguage("EN");

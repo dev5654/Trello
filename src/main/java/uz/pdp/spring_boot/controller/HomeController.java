@@ -7,13 +7,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+
 import uz.pdp.spring_boot.configs.security.UserDetails;
 import uz.pdp.spring_boot.entity.auth.AuthUser;
 
 @Controller
 public class HomeController  {
 
-   private   UserDetails userDetails;
+
 
 
     @PreAuthorize("isAuthenticated()")
@@ -24,9 +26,11 @@ public class HomeController  {
         if(user.getRole().getCode().equals("SUPER_ADMIN"))return "panel/superAdmin";
         if(user.getRole().getCode().equals("ADMIN"))return "panel/admin";
         if(user.getRole().getCode().equals("MANAGER"))return "panel/manager";
-        if(user.getRole().getCode().equals("USER"))return "panel/user";
+//        if(user.getRole().getCode().equals("USER"))return "panel/user";
         return "index";
     }
+
+
 
    /* @PreAuthorize("hasAnyRole('ADMIN')")
     @RequestMapping(value = "/", method = RequestMethod.GET)
