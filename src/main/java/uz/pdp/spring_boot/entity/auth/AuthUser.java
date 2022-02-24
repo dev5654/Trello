@@ -3,11 +3,11 @@ package uz.pdp.spring_boot.entity.auth;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import uz.pdp.spring_boot.entity.BaseEntity;
 import uz.pdp.spring_boot.entity.organization.Organization;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
-import java.time.Instant;
 
 /**
  * @author Nodirbek Abdukarimov Tue. 4:36 PM. 2/22/2022
@@ -17,7 +17,7 @@ import java.time.Instant;
 @Setter
 @Entity
 @Table(name = "auth_user", schema = "auth")
-public class AuthUser {
+public class AuthUser implements BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -31,7 +31,6 @@ public class AuthUser {
     @Column(nullable = false)
     private String language;
 
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "organization_id")
     private Organization organization;
@@ -42,9 +41,7 @@ public class AuthUser {
 
     private String fullName;
 
-    private String profile_image;
-
-    private Instant birth_date;
+    private String profileImage;
 
     private Timestamp created_at;
 
@@ -57,4 +54,5 @@ public class AuthUser {
 
     @OneToOne
     private AuthRole role;
+
 }

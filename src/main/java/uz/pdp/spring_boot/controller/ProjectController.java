@@ -13,6 +13,9 @@ import uz.pdp.spring_boot.dto.project.ProjectCreateDto;
 import uz.pdp.spring_boot.dto.project.ProjectUpdateDto;
 import uz.pdp.spring_boot.services.project.ProjectService;
 
+
+
+
 @Controller
 @RequestMapping("/project/*")
 public class ProjectController extends AbstractController<ProjectService> {

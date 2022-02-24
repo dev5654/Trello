@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
 import uz.pdp.spring_boot.criteria.GenericCriteria;
 import uz.pdp.spring_boot.dto.organization.OrganizationCreateDto;
 import uz.pdp.spring_boot.dto.organization.OrganizationUpdateDto;
@@ -23,11 +24,14 @@ public class OrganizationController extends AbstractController<OrganizationServi
         super(service);
     }
 
-    @PreAuthorize("hasAnyRole('ADMIN')")
+    @PreAuthorize("hasAnyRole('SUPER_ADMIN')")
     @RequestMapping(value = "create/", method = RequestMethod.GET)
     public String createPage() {
         return "organization/create";
     }
+
+
+
 /*    @PreAuthorize("hasAnyRole('MANAGER')")
     @RequestMapping(value = "create/", method = RequestMethod.GET)
     public String managerPage() {
@@ -41,7 +45,6 @@ public class OrganizationController extends AbstractController<OrganizationServi
     }
 
 
-    @PreAuthorize("hasAnyRole('ADMIN')")
     @RequestMapping(value = "create/", method = RequestMethod.POST)
     public String create(@ModelAttribute OrganizationCreateDto dto) {
         service.create(dto);
@@ -62,16 +65,18 @@ public class OrganizationController extends AbstractController<OrganizationServi
     }
 
 
+    @PreAuthorize("hasAnyRole('SUPER_ADMIN')")
     @RequestMapping(value = "update/{id}/", method = RequestMethod.GET)
     public String updatePage(Model model, @PathVariable Long id) {
         model.addAttribute("organization", service.get(id));
         return "organization/update";
     }
 
+
     @RequestMapping(value = "update", method = RequestMethod.POST)
     public String update(@ModelAttribute OrganizationUpdateDto dto) {
         service.update(dto);
-        return "redirect:/organization/list";
+        return "redirect:/";
     }
 
 
