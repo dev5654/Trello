@@ -35,22 +35,28 @@ public class ProjectServiceImpl extends AbstractService<ProjectRepository, Proje
 
     @Override
     public Void delete(Long id) {
+        repository.deleteById(id);
         return null;
     }
 
     @Override
     public Void update(ProjectUpdateDto updateDto) {
+        repository.update(updateDto.getName(), updateDto.getTzPath(), updateDto.getId());
         return null;
     }
 
     @Override
     public List<ProjectDto> getAll(GenericCriteria criteria) {
-        return null;
+        return mapper.toDto(repository.findAll());
     }
 
     @Override
     public ProjectDto get(Long id) {
-        return null;
+        Project project = repository.findById(id).orElseThrow(() -> {
+            throw new RuntimeException("Not found");
+        });
+        ProjectDto dto=mapper.toDto(project);
+        return dto;
     }
 
     @Override

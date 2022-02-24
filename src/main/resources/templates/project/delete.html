@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:include="fragments.html :: header('Organization Delete Page')">
+<head th:include="fragments.html :: header('Project Delete Page')">
 </head>
 <body>
 <header>
@@ -8,17 +8,15 @@
 </header>
 <main>
 
-    <h1>Delete Organization Page</h1>
+    <h1>Delete Project Page</h1>
     <div class="container">
         <div class="row">
             <div class="col-8 mx-auto">
                 <ul>
-                    <li th:text="${organization.logo}"></li>
-                    <li th:text="${organization.name}"></li>
-                    <li th:text="${organization.email}"></li>
-                    <li th:text="${organization.code}"></li>
+                    <li th:text="${project.name}"></li>
+                    <li th:text="${project.tzPath}"></li>
                 </ul>
-                <form method="post" th:action="@{/organization/delete/{id}(id=${organization.id})}">
+                <form method="post" th:action="@{/project/delete/{id}(id=${project.id})}">
                     <button type="submit" class="btn btn-danger">Yes</button>
                     <a th:href="@{/}" class="btn btn-warning">No</a>
                 </form>

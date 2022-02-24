@@ -10,37 +10,29 @@
     <div class="container">
         <div class="row">
             <div class="col-10 mx-auto">
-                <form th:action="@{/organization/update}" th:method="post" th:object="${organization}">
+                <form th:action="@{/project/update}" th:method="post" th:object="${project}">
                     <div class="form-group">
-                        <input class="form-control" type="hidden" id="id" name="id" th:value="${organization.getId()}"/>
+                        <input class="form-control" type="hidden" id="id" name="id" th:value="${project.getId()}"/>
                         <span style="color: red" th:errors="*{id}"></span>
                     </div>
                     <div class="form-group">
                         <label for="name">Name</label>
                         <input type="text" class="form-control" id="name" name="name"
-                               th:value="${organization.getName}"/>
+                               th:value="${project.getName}"/>
                     </div>
 
-                    <div class="form-group">
-                        <label for="logo">Logo</label>
-                        <input type="file" class="form-control" id="logo" name="logo"/>
-                    </div>
 
                     <div class=" form-group">
-                        <label for="code">Code</label>
-                        <input type="text" class="form-control" id="code" name="code"
-                               th:value="${organization.getCode()}"/>
+                        <label for="tzPath">Tz Path</label>
+                        <input type="text" class="form-control" id="tzPath" name="tzPath"
+                               th:value="${project.tzPath}"/>
                     </div>
 
-                    <div class=" form-group">
-                        <label for="email">Email address</label>
-                        <input type="email" class="form-control" name="email" id="email"
-                               th:value="${organization.getEmail()}"/>
-                    </div>
+
 
                     <div class="form-group">
                         <input class="form-control" type="submit" value="save"
-                               th:action="@{/organization/update/{id}(id=${organization.id})}"/>
+                               th:action="@{/project/update/{id}(id=${project.id})}"/>
                     </div>
                 </form>
             </div>

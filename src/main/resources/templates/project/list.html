@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:include="fragments.html :: header('Organizations')">
+<head th:include="fragments.html :: header('Projects')">
 </head>
 <body>
 <header>
@@ -12,28 +12,21 @@
             <thead class="thead-light">
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">Logo</th>
                 <th scope="col">Name</th>
-                <th scope="col">Email</th>
-                <th scope="col">Code</th>
-                <th scope="col">Location</th>
-                <th scope="col">Action</th>
+                <th scope="col">Tz Path</th>
             </tr>
             </thead>
             <tbody>
-            <tr th:each="organization,iter :  ${organizations}">
+            <tr th:each="project,iter :  ${projects}">
                 <th th:text="${iter.count}"></th>
-                <th><img th:src="@{${organization.logo}}"
-                         style="width: 50px;height: 50px; border-radius: 50%;border: 2px solid red"/></th>
-                <th th:text="${organization.name}"></th>
-                <th th:text="${organization.email}"></th>
-                <th th:text="${organization.code}"></th>
+                <th th:text="${project.name}"></th>
+                <th th:text="${project.tzPath}"></th>
                 <th class="icons">
-                    <a th:href="@{/organization/detail/{id}/(id = ${organization.id})}">👁</a>
+                    <a th:href="@{/project/detail/{id}/(id = ${project.id})}">👁</a>
                     <a href="#">🔐</a>
                     <a href="#">🔓</a>
-                    <a th:href="@{/organization/delete/{id}/(id=${organization.id})}">🗑</a>
-                    <a th:href="@{/organization/update/{id}/(id=${organization.id})}">🔄</a>
+                    <a th:href="@{/project/delete/{id}/(id=${project.id})}">🗑</a>
+                    <a th:href="@{/project/update/{id}/(id=${project.id})}">🔄</a>
 
                 </th>
             </tr>
