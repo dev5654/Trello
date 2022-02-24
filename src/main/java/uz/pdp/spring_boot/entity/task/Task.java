@@ -2,6 +2,7 @@ package uz.pdp.spring_boot.entity.task;
 
 import lombok.Getter;
 import lombok.Setter;
+import uz.pdp.spring_boot.entity.BaseEntity;
 import uz.pdp.spring_boot.entity.organization.Organization;
 import uz.pdp.spring_boot.entity.project.ProjectColumn;
 import uz.pdp.spring_boot.enums.Level;
@@ -17,7 +18,7 @@ import java.time.Instant;
 @Setter
 @Entity
 @Table(name = "task", schema = "task")
-public class Task {
+public class Task implements BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)

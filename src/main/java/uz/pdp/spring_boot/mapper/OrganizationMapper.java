@@ -20,7 +20,7 @@ public interface OrganizationMapper extends BaseMapper<
     @Mapping(target = "logo", ignore = true)
     Organization fromCreateDto(OrganizationCreateDto organizationCreateDto);
 
-    @Override
     @Mapping(target = "logo", ignore = true)
+    @Override
     Organization fromUpdateDto(OrganizationUpdateDto organizationUpdateDto);
 }

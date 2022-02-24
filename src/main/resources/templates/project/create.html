@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:include="fragments.html :: header('Organization Create Page')">
+<head th:include="fragments.html :: header('Project Create Page')">
 </head>
 <body>
 <header>
     <section th:include="fragments.html :: navbar"></section>
-    organization
+    project
 </header>
 <main>
     <div class="container">
@@ -18,7 +18,7 @@
                         <input type="text" class="form-control" id="name" name="name"/>
                     </div>
                     <div class="form-group">
-                        <label for="tzPath">Email address</label>
+                        <label for="tzPath">Tz Path</label>
                             <input type="text" class="form-control" name="tzPath" id="tzPath"/>
                     </div>
 
