@@ -18,11 +18,12 @@ import java.util.stream.Collectors;
  */
 
 
-
+@Getter
 public class UserDetails implements org.springframework.security.core.userdetails.UserDetails {
 
-    private AuthUser user;
-    private Long id;
+
+    public static  AuthUser user;
+    public Long id;
 
     public UserDetails(AuthUser user) {
         this.user = user;
@@ -55,6 +56,10 @@ public class UserDetails implements org.springframework.security.core.userdetail
                         .collect(Collectors.toSet())
         );
         return authorities;
+    }
+
+    public static AuthUser getUser() {
+        return user;
     }
 
     @Override

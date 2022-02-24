@@ -28,6 +28,11 @@ public class OrganizationController extends AbstractController<OrganizationServi
     public String createPage() {
         return "organization/create";
     }
+/*    @PreAuthorize("hasAnyRole('MANAGER')")
+    @RequestMapping(value = "create/", method = RequestMethod.GET)
+    public String managerPage() {
+        return "organization/manager";
+    }*/
 
 
     @RequestMapping(value = "organization/", method = RequestMethod.GET)

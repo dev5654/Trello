@@ -30,12 +30,20 @@ public class SuperTrelloApplication /*implements CommandLineRunner*/ {
 
 //        authUserRepository.deleteAll();
 
-        AuthUser admin = new AuthUser();
+/*        AuthUser admin = new AuthUser();
         admin.setUsername("admin");
         admin.setPassword(passwordEncoder.encode("123"));
         admin.setActive(true);
         admin.setBlocked(false);
-        admin.setLanguage("EN");
+        admin.setLanguage("EN");*/
+
+        AuthUser admin1 = new AuthUser();
+        admin1.setUsername("admin1");
+        admin1.setPassword(passwordEncoder.encode("111"));
+        admin1.setActive(true);
+        admin1.setBlocked(false);
+        admin1.setLanguage("EN");
+
 
 //        AuthUser user2 = new AuthUser();
 //
@@ -44,7 +52,7 @@ public class SuperTrelloApplication /*implements CommandLineRunner*/ {
 //        user2.setActive(false);
 //        user2.setBlocked(false);
 
-        authUserRepository.saveAll(Arrays.asList(admin));
+        authUserRepository.saveAll(Arrays.asList(admin1));
 
     }
 }
