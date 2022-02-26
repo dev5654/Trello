@@ -14,10 +14,10 @@ import java.time.Instant;
 @Builder
 public class ProjectCreateDto implements Dto {
     private String name;
-    private String tzPath;
+    private MultipartFile tzPath;
 
     @Builder(builderMethodName = "childBuilder")
-    public ProjectCreateDto(String name, String tzPath) {
+    public ProjectCreateDto(String name, MultipartFile tzPath) {
         this.name = name;
         this.tzPath = tzPath;
     }

@@ -45,35 +45,72 @@
 
         </nav>
 
-        <div style="width: 90%;margin: 0 auto">
-            <div class="my-5"><a th:href="@{/project/create/}" class="btn btn-success">Create Project</a>
+        <div class="container" style="width:100%;margin-left: 150px">
+            <button type="button" class="btn btn-success my-3" data-toggle="modal"
+                    data-target="#createProjectModal">
+                <i class="fa fa-plus"></i> + Create Project
+            </button>
+            <div class="modal fade" id="createProjectModal" tabindex="-1" role="dialog"
+                 aria-labelledby="createProjectModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="createProjectModalLabel">Create Project</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true" class="text-danger">&times;</span>
+                            </button>
+                        </div>
+                        <form th:action="@{/project/create/}" th:method="post" enctype="multipart/form-data">
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label for="name">Name</label>
+                                    <input type="text" class="form-control" id="name" name="name"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="tzPath">Project TZ</label>
+                                    <input type="file" class="form-control" name="tzPath" id="tzPath"/>
+                                </div>
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-success">Save</button>
+
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
-            <div class="container">
-                <table class="table">
-                    <thead class="thead-light">
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Project description</th>
-                        <th scope="col">Action</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr th:each="project,iter :  ${projects}">
-                        <th th:text="${iter.count}"></th>
-                        <th th:text="${project.name}"></th>
-                        <th th:text="${project.tzPath}"></th>
-                        <th class="icons">
-                            <a th:href="@{/project/detail/{id}/(id = ${project.id})}" class="btn btn-outline-info">Detail👁</a>
-                            <a th:href="@{/project/delete/{id}/(id=${project.id})}" class="btn btn-outline-danger">Delete
-                                🗑</a>
-                            <a th:href="@{/project/update/{id}/(id=${project.id})}" class="btn btn-outline-primary">Update
-                                🔄</a>
-                        </th>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
+            <table class="table">
+                <thead class="thead-light">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Project TZ</th>
+                    <th scope="col" class="ml-5">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="project,iter :  ${projects}">
+                    <th th:text="${iter.count}"></th>
+                    <th th:text="${project.name}"></th>
+                    <td><img th:src="@{${project.tzPath}}"
+                             style="width: 100px;height: 100px; border-radius: 10px;border: 4px solid #7e33e0"/>
+                    </td>
+                    <th class="icons">
+                        <a th:href="@{/project/detail/{id}/(id = ${project.id})}"
+                           class="btn btn-outline-info">Detail</a>
+                        <a th:href="@{/project/delete/{id}/(id=${project.id})}"
+                           class="btn btn-outline-danger">Delete</a>
+                        <a th:href="@{/project/update/{id}/(id=${project.id})}"
+                           class="btn btn-outline-primary">Update</a>
+                        <a th:href="@{/admin/create/{id}/(id=${project.id})}"
+                           class="btn btn-outline-success ml-5">Add Member</a>
+                    </th>
+                </tr>
+                </tbody>
+            </table>
         </div>
     </aside>
 </header>
@@ -85,5 +122,14 @@
         main.classList.toggle("open")
     })
 </script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
 </body>
 </html>

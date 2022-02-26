@@ -79,7 +79,6 @@ public class OrganizationController extends AbstractController<OrganizationServi
     @RequestMapping(value = "list/", method = RequestMethod.GET)
     public String listPage(Model model) {
         model.addAttribute("organizations", service.getAll(new GenericCriteria()));
-
         return "organization/list";
     }
 }

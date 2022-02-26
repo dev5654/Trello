@@ -49,23 +49,22 @@
             <!--            <section th:include="popups.html :: create_organization_modal"></section>-->
             <div class="container" style="width:100%;margin-left: 150px">
                 <button type="button" class="btn btn-success my-3" data-toggle="modal"
-                        data-target="#createBookModal">
+                        data-target="#createOrgModal">
                     <i class="fa fa-plus"></i> + Create Organization
                 </button>
-                <div class="modal fade" id="createBookModal" tabindex="-1" role="dialog"
-                     aria-labelledby="createBookModalLabel"
+                <div class="modal fade" id="createOrgModal" tabindex="-1" role="dialog"
+                     aria-labelledby="createOrgModalLabel"
                      aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="createBookModalLabel">Create Organization</h5>
+                                <h5 class="modal-title" id="createOrgModalLabel">Create Organization</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true" class="text-danger">&times;</span>
                                 </button>
                             </div>
                             <form th:action="@{/organization/create/}" th:method="post"
                                   enctype="multipart/form-data">
-
                                 <div class="modal-body">
                                     <div class="form-group">
                                         <label for="name">Name</label>
@@ -185,12 +184,12 @@
 </header>
 
 <!--
-<div class="modal fade" id="createBookModal" tabindex="-1" role="dialog" aria-labelledby="createBookModalLabel"
+<div class="modal fade" id="createOrgModal" tabindex="-1" role="dialog" aria-labelledby="createOrgModalLabel"
      aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="createBookModalLabel">Add New Book</h5>
+                <h5 class="modal-title" id="createOrgModalLabel">Add New Book</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>

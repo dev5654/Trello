@@ -1,6 +1,7 @@
 package uz.pdp.spring_boot.mapper;
 
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 import org.springframework.stereotype.Component;
 import uz.pdp.spring_boot.dto.project.ProjectCreateDto;
 import uz.pdp.spring_boot.dto.project.ProjectDto;
@@ -16,8 +17,12 @@ public interface ProjectMapper extends BaseMapper<
         ProjectUpdateDto> {
 
     @Override
+    @Mapping(target = "tzPath", ignore = true)
+    @Mapping(target = "organization", ignore = true)
     Project fromCreateDto(ProjectCreateDto projectCreateDto);
 
     @Override
+    @Mapping(target = "tzPath", ignore = true)
+    @Mapping(target = "organization", ignore = true)
     Project fromUpdateDto(ProjectUpdateDto projectUpdateDto);
 }

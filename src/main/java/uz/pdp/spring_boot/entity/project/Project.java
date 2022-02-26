@@ -7,6 +7,7 @@ import uz.pdp.spring_boot.entity.organization.Organization;
 
 import javax.persistence.*;
 import java.time.Instant;
+
 @Getter
 @Setter
 @Entity
@@ -25,7 +26,7 @@ public class Project implements BaseEntity {
     @Column(name = "tz_path")
     private String tzPath;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @OneToOne
     @JoinColumn(name = "organization_id")
     private Organization organization;
 
@@ -45,6 +46,4 @@ public class Project implements BaseEntity {
 
     @Column(name = "updateby")
     private Long updateby;
-
-
 }

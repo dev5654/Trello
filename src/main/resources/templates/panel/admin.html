@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:include="fragments.html :: head(title='Admin', path='/css/index.css')">
+<head th:include="fragments.html :: head(title='Admin Panel', path='/css/index.css')">
 <body>
 <header>
     <main>
@@ -12,7 +12,7 @@
         </div>
 
         <div class="link">
-            <a th:href="@{/panel/admin/}">Project</a>
+            <a th:href="@{/project/projects/}">Project</a>
             <a th:href="@{/user/member/}">Member control</a>
             <a th:href="@{/user/admin/}">Admin control</a>
             <a th:href="@{/user/manager/}">Manager control</a>
@@ -46,11 +46,73 @@
         </nav>
 
         <div class="container">
-            <div class="contents">
-                <a th:href="@{/project/create/}" class="btn btn-success">Create Project</a>
-                <a th:href="@{/project/list/}" class="btn btn-success">Project list</a>
+            <h3>Admin</h3>
+            <div class="content" style=" grid-template-columns: 300px 750px;!important;">
+                <div class="contents">
+                    <img src="/images/portfolio.jpg" width="100%"/>
+                </div>
+
+                <div class="contents">
+                    <div class="content-text">
+                        <p>Projects</p>
+                        <p>Export</p>
+                    </div>
+                    <div class="box">
+                        <p>ОсОО “Energi.kg”</p>
+                        <div class="box-text">
+                                    <span>
+                                        <img src="./assets/imges/sunrise.png" alt="">12/04/2021
+                                    </span>
+                            <span>
+                                        <img src="./assets/imges/sunset2.png" alt=""> 12/04/2021
+                                    </span>
+                            <span>
+                                       <img src="./assets/imges/users.png" alt=""> Adyl, Azhar, Arthur
+                                    </span>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <p>ОсОО “Energi.kg”</p>
+                        <div class="box-text">
+                                    <span>
+                                        <img src="./assets/imges/sunrise.png" alt="">12/04/2021
+                                    </span>
+                            <span>
+                                        <img src="./assets/imges/sunset2.png" alt=""> 12/04/2021
+                                    </span>
+                            <span>
+                                       <img src="./assets/imges/users.png" alt=""> Adyl, Azhar, Arthur
+                                    </span>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <p>ОсОО “Energi.kg”</p>
+                        <div class="box-text">
+                                    <span>
+                                        <img src="./assets/imges/sunrise.png" alt="">12/04/2021
+                                    </span>
+                            <span>
+                                        <img src="./assets/imges/sunset2.png" alt=""> 12/04/2021
+                                    </span>
+                            <span>
+                                       <img src="./assets/imges/users.png" alt=""> Adyl, Azhar, Arthur
+                                    </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content pt-5" style=" grid-template-columns: 330px 330px;">
+                <div class="content pt-5" style=" grid-template-columns: 330px 330px;!important;">
+                    <div class="contents"></div>
+                </div>
+                <div class="content pt-5" style=" grid-template-columns: 330px 330px;!important;">
+                    <div class="contents"></div>
+                    <div class="contents"></div>
+                </div>
             </div>
         </div>
+
     </aside>
 
 </header>

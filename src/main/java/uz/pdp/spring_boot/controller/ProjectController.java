@@ -23,16 +23,22 @@ public class ProjectController extends AbstractController<ProjectService> {
     }
 
     @PreAuthorize("hasAnyRole('ADMIN')")
-    @RequestMapping(value = "create/", method = RequestMethod.GET)
-    public String createPage() {
-        return "project/create";
+    @RequestMapping(value = "projects/", method = RequestMethod.GET)
+    public String orgPage(Model model) {
+        model.addAttribute("projects", service.getAll(new GenericCriteria()));
+        return "project/list";
     }
-
+//
+//    @PreAuthorize("hasAnyRole('ADMIN')")
+//    @RequestMapping(value = "create/", method = RequestMethod.GET)
+//    public String createPage() {
+//        return "project/create";
+//    }
 
     @RequestMapping(value = "create/", method = RequestMethod.POST)
     public String create(@ModelAttribute ProjectCreateDto dto) {
         service.create(dto);
-        return "redirect:/";
+        return "redirect:/project/projects/";
     }
 
     @RequestMapping(value = "delete/{id}", method = RequestMethod.GET)
@@ -54,6 +60,7 @@ public class ProjectController extends AbstractController<ProjectService> {
         return "project/update";
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @RequestMapping(value = "update", method = RequestMethod.POST)
     public String update(@ModelAttribute ProjectUpdateDto dto) {
         service.update(dto);
