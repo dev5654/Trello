@@ -46,7 +46,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-10 mx-auto">
-                    <form th:action="@{/organization/update}" th:method="post" th:object="${organization}">
+                    <form th:action="@{/organization/update/}" th:method="post" th:object="${organization}">
                         <div class="form-group">
                             <input class="form-control" type="hidden" id="id" name="id"
                                    th:value="${organization.getId()}"/>

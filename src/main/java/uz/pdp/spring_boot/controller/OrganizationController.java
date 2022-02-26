@@ -62,11 +62,11 @@ public class OrganizationController extends AbstractController<OrganizationServi
         return "organization/update";
     }
 
-
-    @RequestMapping(value = "update", method = RequestMethod.POST)
+    @PreAuthorize("hasRole('SUPER_ADMIN')")
+    @RequestMapping(value = "update/", method = RequestMethod.POST)
     public String update(@ModelAttribute OrganizationUpdateDto dto) {
         service.update(dto);
-        return "redirect:/";
+        return "redirect:/organization/organizations/";
     }
 
 

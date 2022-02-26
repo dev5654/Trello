@@ -51,6 +51,51 @@
                         data-target="#createBookModal">
                     <i class="fa fa-plus"></i> + Create Organization
                 </button>
+                <div class="modal fade" id="createBookModal" tabindex="-1" role="dialog"
+                     aria-labelledby="createBookModalLabel"
+                     aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="createBookModalLabel">Add New Book</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form th:action="@{/organization/create/}" th:method="post"
+                                      enctype="multipart/form-data">
+
+                                    <div class="form-group">
+                                        <label for="name">Name</label>
+                                        <input type="text" class="form-control" id="name" name="name"/>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <label for="logo">Logo</label>
+                                        <input type="file" class="form-control" id="logo" name="logo"/>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="code">Code</label>
+                                        <input type="text" class="form-control" id="code" name="code"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email">Email address</label>
+                                        <input type="email" class="form-control" name="email" id="email"/>
+                                    </div>
+
+                                    <button type="submit" class="btn btn-primary mt-4">➕ Save</button>
+                                </form>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <table class="table">
                     <thead class="thead-light">
                     <tr>
@@ -62,27 +107,71 @@
                     </thead>
                     <tbody>
                     <tr th:each="organization,iter :  ${organizations}">
-                        <th th:text="${iter.count}"></th>
-                        <th><img th:src="@{${organization.logo}}"
-                                 style="width: 50px;height: 50px; border-radius: 50%;border: 2px solid red"/></th>
-                        <th th:text="${organization.name}"></th>
-                        <th class="icons">
-                            <button type="button" data-toggle="modal"
-                                    data-target="#orgDetailsModal"
-                                    class="btn btn-outline-info">Detail
-                            </button>
-                            <!--                            <a th:href="@{/organization/detail/{id}/(id = ${organization.id})}"-->
-                            <!--                               class="btn btn-outline-info">Detail</a>-->
+                        <td th:text="${iter.count}"></td>
+                        <td><img th:src="@{${organization.logo}}"
+                                 style="width: 50px;height: 50px; border-radius: 50%;border: 2px solid red"/></td>
+                        <td th:text="${organization.name}"></td>
+                        <td class=" ml-5">
+                            <!--             <button type="button" data-toggle="modal"
+                                                 data-target="#orgDetailsModal"
+                                                 class="btn btn-outline-info">Detail
+                                         </button>-->
+                            <a th:href="@{/organization/detail/{id}/(id = ${organization.id})}"
+                               class="btn btn-outline-info">Detail</a>
                             <a th:href="@{/organization/delete/{id}/(id=${organization.id})}"
                                class="btn btn-outline-danger">Delete</a>
-                            <!--                            <a th:href="@{/organization/update/{id}/(id=${organization.id})}"-->
-                            <!--                               class="btn btn-outline-primary">Update</a>-->
+                            <a th:href="@{/organization/update/{id}/(id=${organization.id})}"
+                               class="btn btn-outline-primary">Update</a>
+                            <a th:href="@{/organization/update/{id}/(id=${organization.id})}"
+                               class="btn btn-outline-success ml-5">CREATE SUPER ADMIN OR ADMIN </a>
 
-                            <button type="button" data-toggle="modal"
-                                    data-target="#orgUpdateModal"
-                                    class="btn btn-outline-info">Detail
-                            </button>
-                        </th>
+                            <!--       <button type="button" data-toggle="modal"
+                                           data-target="#orgUpdateModal"
+                                           class="btn btn-outline-info">Update
+                                   </button>
+                                   <div class="modal" id="orgUpdateModal" >
+                                       <div class="modal-dialog " role="document">
+                                           <div class="modal-content">
+                                               <div class="modal-header">
+                                                   <h5 class="modal-title" id="orgUpdateModalLabel">Update Organization</h5>
+                                                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                       <span aria-hidden="true">&times;</span>
+                                                   </button>
+                                               </div>
+
+                                               <div class="modal-body">
+                                                   <form th:action="@{/organization/update/{id}/(id=${organization.id})}" th:method="post" enctype="multipart/form-data">
+
+                                                       <div class="form-group">
+                                                           <label for="update_name">Name</label>
+                                                           <input type="text" class="form-control" th:value="${organization.name}" id="update_name" name="name"/>
+                                                       </div>
+
+                                                       &lt;!&ndash;        <div class="form-group">
+                                                                   <label for="logo">Logo</label>
+                                                                   <input type="file" class="form-control" id="logo" name="logo"/>
+                                                               </div>&ndash;&gt;
+
+                                                       <div class="form-group">
+                                                           <label for="update_code">Code</label>
+                                                           <input type="text" class="form-control" th:value="${organization.code}" id="update_code" name="code"/>
+                                                       </div>
+                                                       <div class="form-group">
+                                                           <label for="update_email">Email address</label>
+                                                           <input type="email" class="form-control" th:value="${organization.email}" name="email" id="update_email"/>
+                                                       </div>
+
+                                                       <button type="submit" class="btn btn-primary mt-4">➕ Save</button>
+                                                   </form>
+
+                                               </div>
+                                               <div class="modal-footer">
+                                                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                               </div>
+                                           </div>
+                                       </div>
+                                   </div>-->
+                        </td>
                     </tr>
                     </tbody>
                 </table>
@@ -93,6 +182,7 @@
     </aside>
 </header>
 
+<!--
 <div class="modal fade" id="createBookModal" tabindex="-1" role="dialog" aria-labelledby="createBookModalLabel"
      aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -136,6 +226,8 @@
         </div>
     </div>
 </div>
+-->
+<!--
 
 <div class="modal fade" id="orgDetailsModal" tabindex="-1" role="dialog" aria-labelledby="orgDetailsModalLabel"
      aria-hidden="true">
@@ -157,28 +249,7 @@
         </div>
     </div>
 </div>
-
-
-<div class="modal fade" id="orgUpdateModal" tabindex="-1" role="dialog" aria-labelledby="orgUpdateModalLabel"
-     aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="orgUpdateModalLabel">Update Organization</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-
-            <div class="modal-body">
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
+-->
 
 
 <script>
