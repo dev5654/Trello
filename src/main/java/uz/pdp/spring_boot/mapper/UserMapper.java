@@ -24,5 +24,6 @@ public interface UserMapper extends BaseMapper<
     @Override
     @Mapping(target = "profileImage", ignore = true)
     @Mapping(target = "role", ignore = true)
+
     AuthUser fromUpdateDto(UserUpdateDto userUpdateDto);
 }

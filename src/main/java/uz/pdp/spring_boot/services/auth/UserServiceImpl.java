@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+import uz.pdp.spring_boot.configs.security.UserDetails;
 import uz.pdp.spring_boot.criteria.GenericCriteria;
 import uz.pdp.spring_boot.dto.auth.UserCreateDto;
 import uz.pdp.spring_boot.dto.auth.UserDto;
@@ -11,6 +12,7 @@ import uz.pdp.spring_boot.dto.auth.UserUpdateDto;
 import uz.pdp.spring_boot.entity.auth.AuthRole;
 import uz.pdp.spring_boot.entity.auth.AuthUser;
 import uz.pdp.spring_boot.mapper.UserMapper;
+import uz.pdp.spring_boot.reposiroty.auth.AuthUserRepository;
 import uz.pdp.spring_boot.reposiroty.auth.UserRepository;
 import uz.pdp.spring_boot.services.AbstractService;
 import uz.pdp.spring_boot.services.organization.file.FileStorageService;
@@ -43,8 +45,9 @@ public class UserServiceImpl extends AbstractService<UserRepository, UserMapper,
         String imgPath = fileStorageService.store(file);
         AuthUser authUser = mapper.fromCreateDto(createDto);
         authUser.setProfileImage(imgPath);
-      ;
         authUser.setPassword(passwordEncoder.encode(createDto.getPassword()));
+        authUser.setRole(repository.findRoleByName(createDto.getRole()));
+        authUser.setOrganization(UserDetails.user.getOrganization());
         repository.save(authUser);
         return authUser.getId();
     }

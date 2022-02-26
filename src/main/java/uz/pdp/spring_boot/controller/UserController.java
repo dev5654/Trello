@@ -34,10 +34,8 @@ public class UserController extends AbstractController<UserService> {
 
     @PreAuthorize("hasRole('SUPER_ADMIN')")
     @RequestMapping(value = "/admin/create/", method = RequestMethod.GET)
-
     public String createPage(Model model)
     {
-         model.addAttribute("authRole");
         return "admin/create";
     }
 
