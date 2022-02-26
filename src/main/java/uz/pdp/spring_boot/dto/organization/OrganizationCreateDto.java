@@ -14,11 +14,13 @@ public class OrganizationCreateDto implements Dto {
     private MultipartFile logo;
     private String code;
     private String email;
+    private String location;
 
-    public OrganizationCreateDto(String name, MultipartFile logo, String code, String email) {
+    public OrganizationCreateDto(String name, MultipartFile logo, String code, String email, String location) {
         this.name = name;
+        this.logo = logo;
         this.code = code;
         this.email = email;
-        this.logo = logo;
+        this.location = location;
     }
 }

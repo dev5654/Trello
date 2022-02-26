@@ -18,7 +18,7 @@
         <div class="link">
             <a th:href="@{/organization/SuperAdmins}">Super Admin control</a>
             <a th:href="@{/panel/superAdmin/}"> Organization</a>
-            <a th:href="@{/organization/}">User control</a>
+            <!--            <a th:href="@{/organization/}">User control</a>-->
         </div>
     </main>
 
@@ -47,8 +47,8 @@
             </div>
 
             <!--            <section th:include="popups.html :: create_organization_modal"></section>-->
-            <div class="container m-auto">
-                <button type="button" class="btn btn-success mb-3" data-toggle="modal"
+            <div class="container" style="width:100%;margin-left: 150px">
+                <button type="button" class="btn btn-success my-3" data-toggle="modal"
                         data-target="#createBookModal">
                     <i class="fa fa-plus"></i> + Create Organization
                 </button>
@@ -58,20 +58,19 @@
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="createBookModalLabel">Add New Book</h5>
+                                <h5 class="modal-title" id="createBookModalLabel">Create Organization</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
+                                    <span aria-hidden="true" class="text-danger">&times;</span>
                                 </button>
                             </div>
-                            <div class="modal-body">
-                                <form th:action="@{/organization/create/}" th:method="post"
-                                      enctype="multipart/form-data">
+                            <form th:action="@{/organization/create/}" th:method="post"
+                                  enctype="multipart/form-data">
 
+                                <div class="modal-body">
                                     <div class="form-group">
                                         <label for="name">Name</label>
                                         <input type="text" class="form-control" id="name" name="name"/>
                                     </div>
-
 
                                     <div class="form-group">
                                         <label for="logo">Logo</label>
@@ -82,37 +81,39 @@
                                         <label for="code">Code</label>
                                         <input type="text" class="form-control" id="code" name="code"/>
                                     </div>
+
                                     <div class="form-group">
                                         <label for="email">Email address</label>
                                         <input type="email" class="form-control" name="email" id="email"/>
                                     </div>
 
-                                    <button type="submit" class="btn btn-primary mt-4">➕ Save</button>
-                                </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-success">Save</button>
 
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            </div>
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
                 <table class="table">
                     <thead class="thead-light">
                     <tr>
-                        <th scope="col">#</th>
+                        <!--                        <th scope="col">#</th>-->
                         <th scope="col">Logo</th>
                         <th scope="col">Name</th>
-                        <th scope="col">Action</th>
+                        <th scope="col" class="ml-5">Action</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr th:each="organization,iter :  ${organizations}">
-                        <td th:text="${iter.count}"></td>
+                        <!--                        <td th:text="${iter.count}"></td>-->
                         <td><img th:src="@{${organization.logo}}"
-                                 style="width: 50px;height: 50px; border-radius: 50%;border: 2px solid red"/></td>
+                                 style="width: 100px;height: 100px; border-radius: 10px;border: 4px solid #7e33e0"/>
+                        </td>
                         <td th:text="${organization.name}"></td>
-                        <td class=" ml-5">
+                        <td class="">
                             <!--             <button type="button" data-toggle="modal"
                                                  data-target="#orgDetailsModal"
                                                  class="btn btn-outline-info">Detail

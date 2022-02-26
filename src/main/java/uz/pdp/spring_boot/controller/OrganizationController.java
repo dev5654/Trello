@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import uz.pdp.spring_boot.configs.security.UserDetails;
 import uz.pdp.spring_boot.criteria.GenericCriteria;
 import uz.pdp.spring_boot.dto.organization.OrganizationCreateDto;
 import uz.pdp.spring_boot.dto.organization.OrganizationUpdateDto;
@@ -69,7 +70,6 @@ public class OrganizationController extends AbstractController<OrganizationServi
         return "redirect:/organization/organizations/";
     }
 
-
     @RequestMapping("detail/{id}/")
     public String detail(Model model, @PathVariable(name = "id") Long id) {
         model.addAttribute("organization", service.get(id));
@@ -79,6 +79,7 @@ public class OrganizationController extends AbstractController<OrganizationServi
     @RequestMapping(value = "list/", method = RequestMethod.GET)
     public String listPage(Model model) {
         model.addAttribute("organizations", service.getAll(new GenericCriteria()));
+
         return "organization/list";
     }
 }

@@ -4,11 +4,16 @@
 <body>
 <div class="container-logout">
     <h3>You want to leave your Account</h3>
-    <div class="btn">
-        <form method="post" th:action="@{/auth/logout}">
-            <button type="submit" class="btn btn-danger">Yes</button>
-            <a th:href="@{/}" class="btn btn-warning">No</a>
-        </form>
+    <div class="row mt-5">
+        <div class="col-6">
+            <form method="post" th:action="@{/auth/logout}">
+                <button type="submit" class="btn btn-danger w-100 py-2">Yes</button>
+            </form>
+        </div>
+        <div class="col-6">
+            <a th:href="@{/}" class="btn btn-warning w-100 py-2">No</a>
+        </div>
+
     </div>
 </div>
 </body>
