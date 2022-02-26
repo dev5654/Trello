@@ -14,7 +14,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class PanelController {
 
     @RequestMapping(value = "superAdmin/", method = RequestMethod.GET)
-    public String orgPage(Model model) {
+    public String orgPage() {
         return "panel/superAdmin";
+    }
+
+    @RequestMapping(value = "admin/", method = RequestMethod.GET)
+    public String projectPage() {
+        return "panel/admin";
     }
 }

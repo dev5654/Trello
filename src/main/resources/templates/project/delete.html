@@ -1,13 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:include="fragments.html :: header('Project Delete Page')">
+<html lang="en">
+<head th:include="fragments.html :: head(title='Project delete page', path='/css/index.css')">
 </head>
 <body>
-<header>
-    <section th:include="fragments.html :: navbar"></section>
-</header>
 <main>
-
     <h1>Delete Project Page</h1>
     <div class="container">
         <div class="row">
@@ -24,8 +20,5 @@
         </div>
     </div>
 </main>
-<footer>
-    <section th:include="fragments.html :: js"></section>
-</footer>
 </body>
 </html>

@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 
-.container {
+.container-logout {
   width: 550px;
   height: 300px;
   display: block;
@@ -18,7 +18,7 @@
   transform: translate(-50%, 60%);
 }
 
-.container h3 {
+.container-logout h3 {
   font-family: Josefin Sans;
   font-size: 28px;
   line-height: 37px;
@@ -50,7 +50,7 @@
 }
 
 @media (max-width: 586px) {
-  .container {
+  .container-logout {
     width: 350px;
   }
 }

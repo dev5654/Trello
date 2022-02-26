@@ -1,26 +1,20 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:include="fragments.html :: header('Project Details Page')">
+<head th:include="fragments.html :: head(title='Organization deteils', path='/css/index.css')"></head>
 </head>
 <body>
-<header>
-    <section th:include="fragments.html :: navbar"></section>
-</header>
 <main>
     <div class="container">
         <div class="row">
             <div class="col-6 offset-3">
                 <p class="h4" th:text="${project.name}"></p>
                 <p class="h4" th:text="${project.tzPath}"></p>
-                <form method="get" th:action="@{/project/list}">
+                <form method="get" th:action="@{/}">
                     <button type="submit" class="btn btn-warning">Back</button>
                 </form>
             </div>
         </div>
     </div>
 </main>
-<footer>
-    <section th:include="fragments.html :: js"></section>
-</footer>
 </body>
 </html>

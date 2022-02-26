@@ -1,13 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:include="fragments.html :: header('Organization Delete Page')">
-</head>
-<body>
-<header>
-    <section th:include="fragments.html :: navbar"></section>
-</header>
+<head th:include="fragments.html :: head(title='Organization delete', path='/css/index.css')"></head>
 <main>
-
     <h1>Delete Organization Page</h1>
     <div class="container">
         <div class="row">
@@ -26,8 +20,5 @@
         </div>
     </div>
 </main>
-<footer>
-    <section th:include="fragments.html :: js"></section>
-</footer>
 </body>
 </html>

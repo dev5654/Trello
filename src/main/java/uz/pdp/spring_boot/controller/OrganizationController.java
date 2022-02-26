@@ -18,26 +18,10 @@ import uz.pdp.spring_boot.services.organization.OrganizationService;
 @RequestMapping("/organization/*")
 public class OrganizationController extends AbstractController<OrganizationService> {
 
-
     @Autowired
     public OrganizationController(OrganizationService service) {
         super(service);
     }
-
-    @PreAuthorize("hasAnyRole('SUPER_ADMIN')")
-    @RequestMapping(value = "create/", method = RequestMethod.GET)
-    public String createPage() {
-        return "organization/create";
-    }
-
-
-
-/*    @PreAuthorize("hasAnyRole('MANAGER')")
-    @RequestMapping(value = "create/", method = RequestMethod.GET)
-    public String managerPage() {
-        return "organization/manager";
-    }*/
-
 
     @RequestMapping(value = "organization/", method = RequestMethod.GET)
     public String orgPage(Model model) {
@@ -45,12 +29,17 @@ public class OrganizationController extends AbstractController<OrganizationServi
     }
 
 
+    @PreAuthorize("hasRole('SUPER_ADMIN')")
+    @RequestMapping(value = "create/", method = RequestMethod.GET)
+    public String createPage() {
+        return "organization/create";
+    }
+
     @RequestMapping(value = "create/", method = RequestMethod.POST)
     public String create(@ModelAttribute OrganizationCreateDto dto) {
         service.create(dto);
         return "redirect:/";
     }
-
 
     @RequestMapping(value = "delete/{id}", method = RequestMethod.GET)
     public String deletePage(Model model, @PathVariable(name = "id") Long id) {
@@ -65,7 +54,7 @@ public class OrganizationController extends AbstractController<OrganizationServi
     }
 
 
-    @PreAuthorize("hasAnyRole('SUPER_ADMIN')")
+    @PreAuthorize("hasRole('SUPER_ADMIN')")
     @RequestMapping(value = "update/{id}/", method = RequestMethod.GET)
     public String updatePage(Model model, @PathVariable Long id) {
         model.addAttribute("organization", service.get(id));
