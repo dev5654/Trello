@@ -9,7 +9,6 @@ import uz.pdp.spring_boot.reposiroty.auth.AuthUserRepository;
 
 import java.util.Arrays;
 
-//implements CommandLineRunner
 @SpringBootApplication
 public class SuperTrelloApplication /*implements CommandLineRunner*/ {
 
@@ -28,14 +27,6 @@ public class SuperTrelloApplication /*implements CommandLineRunner*/ {
 
     public void run(String... args) throws Exception {
 
-//        authUserRepository.deleteAll();
-
-/*        AuthUser admin = new AuthUser();
-        admin.setUsername("admin");
-        admin.setPassword(passwordEncoder.encode("123"));
-        admin.setActive(true);
-        admin.setBlocked(false);
-        admin.setLanguage("EN");*/
 
         AuthUser admin1 = new AuthUser();
         admin1.setUsername("admin");

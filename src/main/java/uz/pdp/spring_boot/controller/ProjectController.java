@@ -13,25 +13,14 @@ import uz.pdp.spring_boot.dto.project.ProjectCreateDto;
 import uz.pdp.spring_boot.dto.project.ProjectUpdateDto;
 import uz.pdp.spring_boot.services.project.ProjectService;
 
-
-
-
 @Controller
 @RequestMapping("/project/*")
 public class ProjectController extends AbstractController<ProjectService> {
-
 
     @Autowired
     public ProjectController(ProjectService service) {
         super(service);
     }
-
-
-    @RequestMapping(value = "project/", method = RequestMethod.GET)
-    public String projectPage() {
-        return "project/project";
-    }
-
 
     @PreAuthorize("hasAnyRole('ADMIN')")
     @RequestMapping(value = "create/", method = RequestMethod.GET)
@@ -40,7 +29,6 @@ public class ProjectController extends AbstractController<ProjectService> {
     }
 
 
-    @PreAuthorize("hasAnyRole('ADMIN')")
     @RequestMapping(value = "create/", method = RequestMethod.POST)
     public String create(@ModelAttribute ProjectCreateDto dto) {
         service.create(dto);
@@ -59,6 +47,7 @@ public class ProjectController extends AbstractController<ProjectService> {
         return "redirect:/";
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN')")
     @RequestMapping(value = "update/{id}", method = RequestMethod.GET)
     public String updatePage(Model model, @PathVariable Long id) {
         model.addAttribute("project", service.get(id));
@@ -68,7 +57,7 @@ public class ProjectController extends AbstractController<ProjectService> {
     @RequestMapping(value = "update", method = RequestMethod.POST)
     public String update(@ModelAttribute ProjectUpdateDto dto) {
         service.update(dto);
-        return "redirect:/project/list";
+        return "redirect:/";
     }
 
 

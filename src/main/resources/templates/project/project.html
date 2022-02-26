@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:include="fragments.html :: head(title='Home page', path='/css/index.css')">
+<head th:include="fragments.html :: head(title='Admin', path='/css/index.css')">
 <body>
 <header>
     <main>
@@ -12,10 +12,10 @@
         </div>
 
         <div class="link">
-            <a th:href="@{/organization/}"> Organization</a>
-            <a th:href="@{/project/create/}">Project</a>
-            <a href="#">Task</a>
-            <a href="#">Comment</a>
+            <a th:href="@{/panel/admin/}">Project</a>
+            <a th:href="@{/user/member/}">Member control</a>
+            <a th:href="@{/user/admin/}">Admin control</a>
+            <a th:href="@{/user/manager/}">Manager control</a>
         </div>
     </main>
 
@@ -31,8 +31,7 @@
 
             <div class="user-information">
                 <div class="icon">
-                    <img src="/images/bell.png" alt="">
-                    <i class="far fa-envelope"></i>
+                    <a th:href="@{/auth/logout}" class="btn btn-outline-danger">logout</a>
                 </div>
 
                 <div class="user">
@@ -46,7 +45,8 @@
 
         </nav>
 
-        <div class="container"></div>
+        <div class="container">
+        </div>
     </aside>
 
 </header>

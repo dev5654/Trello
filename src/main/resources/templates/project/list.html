@@ -1,41 +1,89 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:include="fragments.html :: header('Projects')">
-</head>
+<head th:include="fragments.html :: head(title='Project list', path='/css/index.css')"></head>
 <body>
 <header>
-    <section th:include="fragments.html :: navbar"></section>
-</header>
-<main>
-    <div class="container">
-        <table class="table">
-            <thead class="thead-light">
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Name</th>
-                <th scope="col">Tz Path</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="project,iter :  ${projects}">
-                <th th:text="${iter.count}"></th>
-                <th th:text="${project.name}"></th>
-                <th th:text="${project.tzPath}"></th>
-                <th class="icons">
-                    <a th:href="@{/project/detail/{id}/(id = ${project.id})}">👁</a>
-                    <a href="#">🔐</a>
-                    <a href="#">🔓</a>
-                    <a th:href="@{/project/delete/{id}/(id=${project.id})}">🗑</a>
-                    <a th:href="@{/project/update/{id}/(id=${project.id})}">🔄</a>
+    <main>
+        <div class="menu-bar">
+            <i class="fas fa-bars"></i>
+        </div>
+        <div class="logo">
+            <img src="/images/logo.png" alt="">
+        </div>
 
-                </th>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-</main>
-<footer>
-    <section th:include="fragments.html :: js"></section>
-</footer>
+        <div class="link">
+            <a th:href="@{/panel/admin/}">Project</a>
+            <a th:href="@{/user/member/}">Member control</a>
+            <a th:href="@{/user/admin/}">Admin control</a>
+            <a th:href="@{/user/manager/}">Manager control</a>
+        </div>
+    </main>
+
+    <aside>
+        <nav>
+            <div class="input">
+                <div>
+                    <i class="fas fa-search"></i>
+                </div>
+
+                <input type="text" placeholder="Search">
+            </div>
+
+            <div class="user-information">
+                <div class="icon">
+                    <a th:href="@{/auth/logout}" class="btn btn-outline-danger">logout</a>
+                </div>
+
+                <div class="user">
+                    <img src="/images/useer.png" alt="">
+                    <p>Mushkityorlar
+                        <i class="fas fa-angle-down"></i>
+                    </p>
+                </div>
+
+            </div>
+
+        </nav>
+
+        <div style="width: 90%;margin: 0 auto">
+            <div class="my-5"><a th:href="@{/project/create/}" class="btn btn-success">Create Project</a>
+            </div>
+            <div class="container">
+                <table class="table">
+                    <thead class="thead-light">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Project description</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="project,iter :  ${projects}">
+                        <th th:text="${iter.count}"></th>
+                        <th th:text="${project.name}"></th>
+                        <th th:text="${project.tzPath}"></th>
+                        <th class="icons">
+                            <a th:href="@{/project/detail/{id}/(id = ${project.id})}" class="btn btn-outline-info">Detail👁</a>
+                            <a th:href="@{/project/delete/{id}/(id=${project.id})}" class="btn btn-outline-danger">Delete
+                                🗑</a>
+                            <a th:href="@{/project/update/{id}/(id=${project.id})}" class="btn btn-outline-primary">Update
+                                🔄</a>
+                        </th>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </aside>
+</header>
+
+<script>
+    const menu = document.querySelector(".menu-bar")
+    const main = document.querySelector("main")
+    menu.addEventListener("click", () => {
+        main.classList.toggle("open")
+    })
+</script>
 </body>
 </html>
