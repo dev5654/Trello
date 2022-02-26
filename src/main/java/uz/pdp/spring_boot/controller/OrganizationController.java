@@ -23,22 +23,23 @@ public class OrganizationController extends AbstractController<OrganizationServi
         super(service);
     }
 
-    @RequestMapping(value = "organization/", method = RequestMethod.GET)
+    @PreAuthorize("hasAnyRole('SUPER_ADMIN')")
+    @RequestMapping(value = "organizations/", method = RequestMethod.GET)
     public String orgPage(Model model) {
-        return "organization/organization";
+        model.addAttribute("organizations", service.getAll(new GenericCriteria()));
+        return "organization/list";
     }
 
-
-    @PreAuthorize("hasRole('SUPER_ADMIN')")
+   /* @PreAuthorize("hasAnyRole('SUPER_ADMIN')")
     @RequestMapping(value = "create/", method = RequestMethod.GET)
     public String createPage() {
         return "organization/create";
-    }
+    }*/
 
     @RequestMapping(value = "create/", method = RequestMethod.POST)
     public String create(@ModelAttribute OrganizationCreateDto dto) {
         service.create(dto);
-        return "redirect:/";
+        return "redirect:/organization/organizations/";
     }
 
     @RequestMapping(value = "delete/{id}", method = RequestMethod.GET)
