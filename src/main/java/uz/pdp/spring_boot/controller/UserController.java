@@ -5,6 +5,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import uz.pdp.spring_boot.criteria.GenericCriteria;
@@ -20,23 +21,24 @@ public class UserController extends AbstractController<UserService> {
     }
 
     @PreAuthorize("hasAnyRole('SUPER_ADMIN','ADMIN')")
-    @RequestMapping(value = "/user/admin/", method = RequestMethod.GET)
-    public String adminPage() {
-        return "user/admin";
-    }
-
-    @PreAuthorize("hasAnyRole('SUPER_ADMIN','ADMIN')")
-    @RequestMapping(value = "/admin/create/", method = RequestMethod.GET)
-
-    public String createPage(Model model) {
-        model.addAttribute("authRole");
+    @RequestMapping(value = "/admin/create/{id}", method = RequestMethod.GET)
+    public String adminPage(Model model ,@PathVariable String id) {
+        model.addAttribute("organization" , id);
         return "admin/create";
     }
 
-    @RequestMapping(value = "/admin/create/", method = RequestMethod.POST)
+/*
+    @RequestMapping(value = "/admin/create/", method = RequestMethod.GET)
+    public String sAdmin(Model model) {
+        model.addAttribute("authRole");
+        return "admin/create";
+    }*/
+
+    @RequestMapping(value = "/admin/create/{id}", method = RequestMethod.POST)
     public String create(@ModelAttribute UserCreateDto dto) {
+//       dto.setOrganizationId(Long.valueOf(id));
         service.create(dto);
-        return "redirect:/";
+        return "redirect:/organization/organizations/";
     }
 
     @RequestMapping(value = "/admin/list/", method = RequestMethod.GET)

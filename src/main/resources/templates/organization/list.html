@@ -16,6 +16,7 @@
         </div>
 
         <div class="link">
+            <a th:href="@{/organization/SuperAdmins}">Super Admin control</a>
             <a th:href="@{/panel/superAdmin/}"> Organization</a>
             <a th:href="@{/organization/}">User control</a>
         </div>
@@ -122,8 +123,8 @@
                                class="btn btn-outline-danger">Delete</a>
                             <a th:href="@{/organization/update/{id}/(id=${organization.id})}"
                                class="btn btn-outline-primary">Update</a>
-                            <a th:href="@{/organization/update/{id}/(id=${organization.id})}"
-                               class="btn btn-outline-success ml-5">CREATE SUPER ADMIN OR ADMIN </a>
+                            <a th:href="@{/admin/create/{id}/(id=${organization.id})}"
+                               class="btn btn-outline-success ml-5">CREATE ADMIN</a>
 
                             <!--       <button type="button" data-toggle="modal"
                                            data-target="#orgUpdateModal"

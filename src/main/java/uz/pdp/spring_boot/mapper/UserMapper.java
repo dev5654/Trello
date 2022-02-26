@@ -19,11 +19,12 @@ public interface UserMapper extends BaseMapper<
     @Override
     @Mapping(target = "profileImage", ignore = true)
     @Mapping(target = "role", ignore = true)
+    @Mapping(target = "organization", ignore = true)
     AuthUser fromCreateDto(UserCreateDto userCreateDto);
 
     @Override
     @Mapping(target = "profileImage", ignore = true)
     @Mapping(target = "role", ignore = true)
-
+    @Mapping(target = "organization", ignore = true)
     AuthUser fromUpdateDto(UserUpdateDto userUpdateDto);
 }

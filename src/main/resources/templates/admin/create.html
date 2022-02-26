@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:include="fragments.html :: head(title='Admin create', path='/css/index.css')">
+<head th:include="fragments.html :: head(title='Super Admin or Admin create', path='/css/index.css')">
 <body>
 <header>
     <main>
@@ -33,7 +33,7 @@
                 </div>
 
                 <div class="user">
-                    <img src="/images/useer.png" alt="">
+                    <img src="/images/user.png" alt="">
                     <p>Mushkityorlar
                         <i class="fas fa-angle-down"></i>
                     </p>
@@ -46,7 +46,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-10 mx-auto">
-                    <form th:action="@{/admin/create/}" th:method="post" enctype="multipart/form-data">
+                    <form  th:action="@{/admin/create/{id}/(id=${organization})}" th:method="post" enctype="multipart/form-data">
                         <div class="form-group">
                             <label for="name">User Name</label>
                             <input type="text" class="form-control" id="name" name="username"/>
@@ -83,7 +83,7 @@
                         <div class="form-group">
                             <label for="role">Language</label>
                             <select id="role" name="role" class="form-control">
-                                <option name="role_name" value="SUPER_ADMIN">SUPER_ADMIN</option>
+<!--                                <option name="role_name" value="SUPER_ADMIN">SUPER_ADMIN</option>-->
                                 <option name="role_name" value="ADMIN">ADMIN</option>
                             </select>
                         </div>

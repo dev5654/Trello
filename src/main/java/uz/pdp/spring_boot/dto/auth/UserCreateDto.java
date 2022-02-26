@@ -21,16 +21,18 @@ public class UserCreateDto implements Dto {
     private String phone;
     private String email;
     private String fullName;
+    private Long organizationId;
     private MultipartFile profileImage;
     private String  role;
 
-    public UserCreateDto(String username, String password, String language, String phone, String email, String fullName, MultipartFile profileImage, String  role) {
+    public UserCreateDto(String username, String password, String language, String phone, String email, String fullName, Long id, MultipartFile profileImage, String role) {
         this.username = username;
         this.password = password;
         this.language = language;
         this.phone = phone;
         this.email = email;
         this.fullName = fullName;
+        this.organizationId = id;
         this.profileImage = profileImage;
         this.role = role;
     }
