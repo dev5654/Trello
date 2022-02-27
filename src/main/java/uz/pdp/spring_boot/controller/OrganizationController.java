@@ -36,7 +36,7 @@ public class OrganizationController extends AbstractController<OrganizationServi
     public String createPage() {
         return "organization/create";
     }*/
-
+ /*  @PreAuthorize("hasAnyRole('SUPER_ADMIN')")*/
     @RequestMapping(value = "create/", method = RequestMethod.POST)
     public String create(@ModelAttribute OrganizationCreateDto dto) {
         service.create(dto);
