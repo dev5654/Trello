@@ -31,7 +31,7 @@ public class AuthUser implements BaseEntity {
     @Column(nullable = false)
     private String language;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @OneToOne
     @JoinColumn(name = "organization_id")
     private Organization organization;
 
@@ -44,7 +44,6 @@ public class AuthUser implements BaseEntity {
     private String profileImage;
 
     private Timestamp created_at;
-
 
     @Column(name = "is_active", nullable = false)
     private boolean active;

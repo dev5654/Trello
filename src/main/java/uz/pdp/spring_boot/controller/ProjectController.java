@@ -13,38 +13,32 @@ import uz.pdp.spring_boot.dto.project.ProjectCreateDto;
 import uz.pdp.spring_boot.dto.project.ProjectUpdateDto;
 import uz.pdp.spring_boot.services.project.ProjectService;
 
-
-
-
 @Controller
 @RequestMapping("/project/*")
 public class ProjectController extends AbstractController<ProjectService> {
-
 
     @Autowired
     public ProjectController(ProjectService service) {
         super(service);
     }
 
-
-    @RequestMapping(value = "project/", method = RequestMethod.GET)
-    public String projectPage() {
-        return "project/project";
-    }
-
-
     @PreAuthorize("hasAnyRole('ADMIN')")
-    @RequestMapping(value = "create/", method = RequestMethod.GET)
-    public String createPage() {
-        return "project/create";
+    @RequestMapping(value = "projects/", method = RequestMethod.GET)
+    public String orgPage(Model model) {
+        model.addAttribute("projects", service.getAll(new GenericCriteria()));
+        return "project/list";
     }
+//
+//    @PreAuthorize("hasAnyRole('ADMIN')")
+//    @RequestMapping(value = "create/", method = RequestMethod.GET)
+//    public String createPage() {
+//        return "project/create";
+//    }
 
-
-    @PreAuthorize("hasAnyRole('ADMIN')")
     @RequestMapping(value = "create/", method = RequestMethod.POST)
     public String create(@ModelAttribute ProjectCreateDto dto) {
         service.create(dto);
-        return "redirect:/";
+        return "redirect:/project/projects/";
     }
 
     @RequestMapping(value = "delete/{id}", method = RequestMethod.GET)
@@ -59,16 +53,18 @@ public class ProjectController extends AbstractController<ProjectService> {
         return "redirect:/";
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN')")
     @RequestMapping(value = "update/{id}", method = RequestMethod.GET)
     public String updatePage(Model model, @PathVariable Long id) {
         model.addAttribute("project", service.get(id));
         return "project/update";
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @RequestMapping(value = "update", method = RequestMethod.POST)
     public String update(@ModelAttribute ProjectUpdateDto dto) {
         service.update(dto);
-        return "redirect:/project/list";
+        return "redirect:/";
     }
 
 

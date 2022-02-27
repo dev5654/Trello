@@ -1,86 +1,19 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Log out</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        .container {
-            width: 550px;
-            height: 300px;
-            display: block;
-            padding: 40px 50px;
-            text-align: center;
-            background: #ffffff;
-            box-shadow: 0px 0px 25px 10px #f9f9f3;
-            position: relative;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, 60%);
-        }
-
-        .container h3 {
-            font-family: Josefin Sans;
-            font-size: 28px;
-            line-height: 37px;
-            color: #000000;
-        }
-
-        .btn {
-            display: flex;
-            justify-content: space-around;
-            gap: 20px;
-        }
-
-        .btn button {
-            margin-top: 140px;
-            width: 150px;
-            height: 40px;
-            font-family: Josefin Sans;
-            font-style: normal;
-            font-weight: normal;
-            font-size: 17px;
-            line-height: 20px;
-            color: #fff;
-            border: none;
-            background-color: #7e33e0;
-        }
-
-        .btn button:last-child {
-            background-color: #fb2e86;
-        }
-
-        @media (max-width: 586px) {
-            .container {
-                width: 350px;
-            }
-        }
-
-    </style>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-            href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;500;600;700&family=Red+Hat+Display&display=swap"
-            rel="stylesheet">
-
-    <link rel="stylesheet" href="./static/css/logout.css">
-</head>
+<head th:include="fragments.html :: head(title='Logout', path='/css/logout.css')">
 <body>
-<div class="container">
+<div class="container-logout">
     <h3>You want to leave your Account</h3>
+    <div class="row mt-5">
+        <div class="col-6">
+            <form method="post" th:action="@{/auth/logout}">
+                <button type="submit" class="btn btn-danger w-100 py-2">Yes</button>
+            </form>
+        </div>
+        <div class="col-6">
+            <a th:href="@{/}" class="btn btn-warning w-100 py-2">No</a>
+        </div>
 
-    <div class="btn">
-        <form th:action="@{/auth/logout}" th:method="post">
-            <button><a th:href="@{/}" style="color: #fff;text-decoration: none">No</a></button>
-            <button type="submit">Yes</button>
-        </form>
     </div>
 </div>
 </body>

@@ -19,6 +19,17 @@ header main {
   padding: 130px 0 0 80px;
 }
 
+header main .logo {
+  margin-right: 20px;
+  margin-left: -60px;
+  margin-top: -100px;
+}
+
+header main .logo img {
+  width: 100%;
+}
+
+
 .menu-bar {
   position: absolute;
   top: 20px;

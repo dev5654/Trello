@@ -1,364 +1,24 @@
 <!DOCTYPE html>
-
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<!--<head th:include="fragments.html :: header('Organizations')">-->
+<head th:include="fragments.html :: head(title='Organization list', path='/css/index.css')"></head>
 
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Index html one</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-
-
-    <!--    <link rel="stylesheet" href="./assets/css/index.css">-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;500;600;700&family=Red+Hat+Display&family=Rubik:wght@400;500;600;700&display=swap"
-          rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Rubik;
-        }
-
-        header {
-            display: grid;
-            grid-template-columns: 300px 1fr;
-            height: 100vh;
-            overflow-y: hidden;
-        }
-
-        header main {
-            width: 100%;
-            height: 100vh;
-            background: #f8f8fb;
-            padding: 130px 0 0 80px;
-        }
-
-        .menu-bar {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            font-size: 24px;
-            display: none;
-        }
-
-        .link {
-            margin-top: 100px;
-        }
-
-        .link a {
-            display: block;
-            font-style: normal;
-            font-weight: normal;
-            font-size: 18px;
-            line-height: 20px;
-            color: #000000;
-            text-decoration: none;
-            margin: 30px 0;
-        }
-
-        .link a:first-child {
-            font-style: normal;
-            font-weight: 500;
-        }
-
-        aside nav {
-            width: 100%;
-            height: 100px;
-            background: #ffffff;
-            box-shadow: 1px 2px 11px rgba(148, 148, 148, 0.25);
-        }
-
-        nav {
-            width: 100%;
-            display: grid;
-            grid-template-columns: 1fr 350px;
-        }
-
-        nav .input {
-            display: flex;
-            align-items: center;
-            padding: 22px 25px;
-        }
-
-        .input .fa-search {
-            position: relative;
-            top: 0px;
-            left: 50px;
-        }
-
-        .input input {
-            padding: 0 70px;
-            width: 100%;
-            height: 56px;
-            background: #ffffff;
-            border: 1px solid #ebebeb;
-            box-sizing: border-box;
-            border-radius: 101px;
-            outline: none;
-        }
-
-        .input input::placeholder {
-            font-size: 18px;
-        }
-
-        .user-information {
-            display: flex;
-            align-items: center;
-            gap: 75px;
-        }
-
-        .icon {
-            display: flex;
-            align-items: center;
-            gap: 40px;
-        }
-
-        .icon img {
-            width: 28px;
-            height: 28px;
-        }
-
-        .icon i {
-            width: 28px;
-            height: 28px;
-            font-size: 28px;
-        }
-
-        .user {
-            display: flex;
-            align-items: center;
-            gap: 13px;
-        }
-
-        .user p {
-            font-style: normal;
-            font-weight: normal;
-            font-size: 18px;
-            line-height: 20px;
-            color: #000000;
-        }
-
-        .container {
-            width: 100%;
-            padding: 10px 20px 60px 20px;
-        }
-
-        .content {
-            display: grid;
-            grid-template-columns: 750px 300px;
-            gap: 20px;
-            height: 270px;
-            border-radius: 17px;
-            margin-top: 10px;
-        }
-
-        .contents,
-        .content-box {
-            background: #f6f6f6;
-            border-radius: 17px;
-            margin-top: 20px;
-            padding: 22px;
-        }
-
-        .content-text {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .content-text p {
-            font-style: normal;
-            font-weight: 700;
-            font-size: 20px;
-            line-height: 20px;
-            color: #000000;
-        }
-
-        .content-text p:last-child {
-            font-weight: 500;
-            font-size: 18px;
-        }
-
-        .box {
-            margin: 10px 0;
-            padding: 23px 24px;
-            width: 100%;
-            height: 55px;
-            background: #e0e4ea;
-            border-radius: 17px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .box p {
-            font-style: normal;
-            font-weight: 600;
-            font-size: 18px;
-            line-height: 20px;
-            color: #000000;
-        }
-
-        .box .box-text span {
-            margin: 0 10px;
-            font-style: normal;
-            font-weight: normal;
-            font-size: 15px;
-            line-height: 20px;
-            color: #000000;
-        }
-
-        .content-box .box-text p {
-            font-style: normal;
-            font-weight: 500;
-            font-size: 16px;
-            line-height: 20px;
-            color: #000000;
-        }
-
-        .content-box .box-text span {
-            margin: 4px 0;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        /*
-
-        ===================  Responsive ================
-
-        */
-
-        @media (max-width: 1490px) {
-            header {
-                display: grid;
-                grid-template-columns: 60px 1fr;
-            }
-
-            main {
-                position: fixed;
-                top: 0;
-                left: 0;
-            }
-
-            header main {
-                width: 300px;
-                height: 100%;
-                position: relative;
-                top: 0;
-                left: -250px;
-                transition: 1s;
-                z-index: 2;
-            }
-
-            .menu-bar {
-                display: block;
-                position: fixed;
-                top: 20px;
-                left: 15px;
-            }
-
-            .open {
-                width: 300px;
-                position: relative;
-                top: 0;
-                left: 0px;
-                z-index: 1;
-                transition: 1s;
-            }
-        }
-
-        @media (max-width: 1175px) {
-            header {
-                overflow-y: scroll;
-            }
-
-            .content {
-                display: grid;
-                grid-template-columns: repeat(1, 1fr);
-                height: 100%;
-            }
-        }
-
-        @media (max-width: 800px) {
-            .box {
-                display: block;
-                height: 120px;
-                padding: 10px;
-            }
-
-            .box-text span {
-                display: block;
-                text-align: left;
-                margin: 20px 0;
-            }
-        }
-
-        @media (max-width: 630px) {
-            .user-information {
-                width: 50px;
-                display: block;
-            }
-
-            .user {
-                display: block;
-                margin: 0;
-            }
-
-            nav {
-                display: block;
-            }
-
-            .icon,
-            .user {
-                display: none;
-            }
-
-            .container {
-                width: 450px;
-                padding: 0;
-            }
-        }
-
-        @media (max-width: 610px) {
-            .content {
-                width: 400px;
-            }
-        }
-
-        @media (max-width: 510px) {
-            .content {
-                width: 280px;
-            }
-
-            .container {
-                width: 300px;
-                padding: 0;
-                margin: 0;
-            }
-        }
-
-    </style>
-    <link rel="stylesheet" href="/static/css/index.css">
-</head>
 <body>
+
 <header>
     <main>
         <div class="menu-bar">
             <i class="fas fa-bars"></i>
         </div>
-        <div class="logo">
-            <img src="![](../../static/images/logo.png)" alt="">
+        <div class="logo" style=" margin-right: 20px;
+        margin-left: -60px;
+        margin-top: -100px;">
+            <img src="/images/logo.png" alt="" style="width: 100%">
         </div>
 
         <div class="link">
-            <a th:href="@{/panel/superAdmin/}"> Organization</a>
-            <a th:href="@{/organization/}">User control</a>
+            <a th:href="@{/panel/superAdmin/}">Home</a>
+            <a th:href="@{/superAdmin/list/}">Super Admin control</a>
+            <!--            <a th:href="@{/organization/}">User control</a>-->
         </div>
     </main>
 
@@ -374,12 +34,11 @@
 
             <div class="user-information">
                 <div class="icon">
-                    <img src="static/images/bell.png" alt="">
-                    <i class="far fa-envelope"></i>
+                    <a th:href="@{/auth/logout}" class="btn btn-outline-danger">logout</a>
                 </div>
 
                 <div class="user">
-                    <img src="static/images/useer.png" alt="">
+                    <img src="/images/useer.png" alt="">
                     <p>Mushkityorlar
                         <i class="fas fa-angle-down"></i>
                     </p>
@@ -387,89 +46,237 @@
 
             </div>
 
+            <!--            <section th:include="popups.html :: create_organization_modal"></section>-->
+            <div class="" style="width:100%;margin-left: 150px">
+                <button type="button" class="btn btn-success my-3" data-toggle="modal"
+                        data-target="#createOrgModal">+ Create Organization
+                </button>
+                <div class="modal fade" id="createOrgModal" tabindex="-1" role="dialog"
+                     aria-labelledby="createOrgModalLabel"
+                     aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="createOrgModalLabel">Create Organization</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true" class="text-danger">&times;</span>
+                                </button>
+                            </div>
+                            <form th:action="@{/organization/create/}" th:method="post"
+                                  enctype="multipart/form-data">
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <label for="name">Name</label>
+                                        <input type="text" class="form-control" id="name" name="name"/>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="logo">Logo</label>
+                                        <input type="file" class="form-control" id="logo" name="logo"/>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="code">Code</label>
+                                        <input type="text" class="form-control" id="code" name="code"/>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="email">Email address</label>
+                                        <input type="email" class="form-control" name="email" id="email"/>
+                                    </div>
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-success">Save</button>
+
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="content">
+                    <div class="contents">
+                        <div class="content-text" style="margin-bottom: 20px">
+                            <p>Organizations</p>
+                            <p>Export</p>
+                        </div>
+                        <div th:each="organization : ${organizations}">
+                            <a th:href="@{/organization/detail/{id}/(id = ${organization.id})}" style="text-decoration: none">
+                                <div class="box">
+                                    <p th:text="${organization.name}"></p>
+                                    <div class="box-text">
+                                        </span>
+                                        <span>
+                                        <img th:src="@{/images/sunrise.png}" alt="">
+                                        <span th:text="${organization.email}"></span>
+                                    </span>
+                                        <span>
+                                       <img th:src="@{/images/users.png}" alt="">
+                                        <span th:text="${organization.code}"></span>
+                                    </span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <<!--table class="table">
+                    <thead class="thead-light">
+                    <tr>
+                        &lt;!&ndash;                        <th scope="col">#</th>&ndash;&gt;
+                        <th scope="col">Logo</th>
+                        <th scope="col">Name</th>
+                        <th scope="col" class="ml-5">Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="organization,iter :  ${organizations}">
+                        &lt;!&ndash;                        <td th:text="${iter.count}"></td>&ndash;&gt;
+                        <td><img th:src="@{${organization.logo}}"
+                                 style="width: 100px;height: 100px; border-radius: 10px;border: 4px solid #7e33e0"/>
+                        </td>
+                        <td th:text="${organization.name}"></td>
+                        <td class="">
+                            &lt;!&ndash;             <button type="button" data-toggle="modal"
+                                                 data-target="#orgDetailsModal"
+                                                 class="btn btn-outline-info">Detail
+                                         </button>&ndash;&gt;
+                            <a th:href="@{/organization/detail/{id}/(id = ${organization.id})}"
+                               class="btn btn-outline-info">Detail</a>
+                            <a th:href="@{/organization/delete/{id}/(id=${organization.id})}"
+                               class="btn btn-outline-danger">Delete</a>
+                            <a th:href="@{/organization/update/{id}/(id=${organization.id})}"
+                               class="btn btn-outline-primary">Update</a>
+                            <a th:href="@{/admin/create/{id}/(id=${organization.id})}"
+                               class="btn btn-outline-success ml-5">CREATE ADMIN</a>
+
+                            &lt;!&ndash;       <button type="button" data-toggle="modal"
+                                           data-target="#orgUpdateModal"
+                                           class="btn btn-outline-info">Update
+                                   </button>
+                                   <div class="modal" id="orgUpdateModal" >
+                                       <div class="modal-dialog " role="document">
+                                           <div class="modal-content">
+                                               <div class="modal-header">
+                                                   <h5 class="modal-title" id="orgUpdateModalLabel">Update Organization</h5>
+                                                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                       <span aria-hidden="true">&times;</span>
+                                                   </button>
+                                               </div>
+
+                                               <div class="modal-body">
+                                                   <form th:action="@{/organization/update/{id}/(id=${organization.id})}" th:method="post" enctype="multipart/form-data">
+
+                                                       <div class="form-group">
+                                                           <label for="update_name">Name</label>
+                                                           <input type="text" class="form-control" th:value="${organization.name}" id="update_name" name="name"/>
+                                                       </div>
+
+                                                       &lt;!&ndash;        <div class="form-group">
+                                                                   <label for="logo">Logo</label>
+                                                                   <input type="file" class="form-control" id="logo" name="logo"/>
+                                                               </div>&ndash;&gt;
+
+                                                       <div class="form-group">
+                                                           <label for="update_code">Code</label>
+                                                           <input type="text" class="form-control" th:value="${organization.code}" id="update_code" name="code"/>
+                                                       </div>
+                                                       <div class="form-group">
+                                                           <label for="update_email">Email address</label>
+                                                           <input type="email" class="form-control" th:value="${organization.email}" name="email" id="update_email"/>
+                                                       </div>
+
+                                                       <button type="submit" class="btn btn-primary mt-4">➕ Save</button>
+                                                   </form>
+
+                                               </div>
+                                               <div class="modal-footer">
+                                                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                               </div>
+                                           </div>
+                                       </div>
+                                   </div>&ndash;&gt;
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>-->
+            </div>
         </nav>
-
-        <div style="width: 90%;margin: 0 auto
-">
-            <div class="my-5"> <a  th:href="@{/organization/create/}" class="btn btn-success">Create Organization</a></div>
-            <table class="table">
-                <thead class="thead-light">
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Logo</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Code</th>
-                    <th scope="col">Location</th>
-                    <th scope="col">Action</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr th:each="organization,iter :  ${organizations}">
-                    <th th:text="${iter.count}"></th>
-                    <th><img th:src="@{${organization.logo}}"
-                             style="width: 50px;height: 50px; border-radius: 50%;border: 2px solid red"/></th>
-                    <th th:text="${organization.name}"></th>
-                    <th th:text="${organization.email}"></th>
-                    <th th:text="${organization.code}"></th>
-                    <th class="icons">
-                        <a th:href="@{/organization/detail/{id}/(id = ${organization.id})}" class="btn btn-outline-info">Detail👁</a>
-                        <!--<a href="#">🔐</a>
-                        <a href="#">🔓</a>-->
-                        <a th:href="@{/organization/delete/{id}/(id=${organization.id})}" class="btn btn-outline-danger">Delete 🗑</a>
-                        <a th:href="@{/organization/update/{id}/(id=${organization.id})}" class="btn btn-outline-primary">Update 🔄</a>
-
-                    </th>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     </aside>
-
 </header>
+
+<!--
+<div class="modal fade" id="createOrgModal" tabindex="-1" role="dialog" aria-labelledby="createOrgModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="createOrgModalLabel">Add New Book</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form th:action="@{/organization/create/}" th:method="post" enctype="multipart/form-data">
+
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" id="name" name="name"/>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="logo">Logo</label>
+                        <input type="file" class="form-control" id="logo" name="logo"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="code">Code</label>
+                        <input type="text" class="form-control" id="code" name="code"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email address</label>
+                        <input type="email" class="form-control" name="email" id="email"/>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary mt-4">➕ Save</button>
+                </form>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+-->
+<!--
+
+<div class="modal fade" id="orgDetailsModal" tabindex="-1" role="dialog" aria-labelledby="orgDetailsModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="orgDetailsModalLabel">Organization Details</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+-->
+
 
 <script>
     const menu = document.querySelector(".menu-bar")
@@ -477,6 +284,16 @@
     menu.addEventListener("click", () => {
         main.classList.toggle("open")
     })
+
 </script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
 </body>
 </html>

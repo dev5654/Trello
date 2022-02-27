@@ -18,7 +18,6 @@ import java.time.Instant;
 @Table(name = "task_comment", schema = "task")
 public class TaskComment {
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
