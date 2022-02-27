@@ -47,7 +47,7 @@
             </div>
 
             <!--            <section th:include="popups.html :: create_organization_modal"></section>-->
-            <div class="container" style="width:100%;margin-left: 150px">
+            <div class="" style="width:100%;margin-left: 150px">
                 <button type="button" class="btn btn-success my-3" data-toggle="modal"
                         data-target="#createOrgModal">+ Create Organization
                 </button>
@@ -95,10 +95,36 @@
                         </div>
                     </div>
                 </div>
-                <table class="table">
+                <div class="content">
+                    <div class="contents">
+                        <div class="content-text" style="margin-bottom: 20px">
+                            <p>Organizations</p>
+                            <p>Export</p>
+                        </div>
+                        <div th:each="organization : ${organizations}">
+                            <a th:href="@{/organization/detail/{id}/(id = ${organization.id})}" style="text-decoration: none">
+                                <div class="box">
+                                    <p th:text="${organization.name}"></p>
+                                    <div class="box-text">
+                                        </span>
+                                        <span>
+                                        <img th:src="@{/images/sunrise.png}" alt="">
+                                        <span th:text="${organization.email}"></span>
+                                    </span>
+                                        <span>
+                                       <img th:src="@{/images/users.png}" alt="">
+                                        <span th:text="${organization.code}"></span>
+                                    </span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <<!--table class="table">
                     <thead class="thead-light">
                     <tr>
-                        <!--                        <th scope="col">#</th>-->
+                        &lt;!&ndash;                        <th scope="col">#</th>&ndash;&gt;
                         <th scope="col">Logo</th>
                         <th scope="col">Name</th>
                         <th scope="col" class="ml-5">Action</th>
@@ -106,16 +132,16 @@
                     </thead>
                     <tbody>
                     <tr th:each="organization,iter :  ${organizations}">
-                        <!--                        <td th:text="${iter.count}"></td>-->
+                        &lt;!&ndash;                        <td th:text="${iter.count}"></td>&ndash;&gt;
                         <td><img th:src="@{${organization.logo}}"
                                  style="width: 100px;height: 100px; border-radius: 10px;border: 4px solid #7e33e0"/>
                         </td>
                         <td th:text="${organization.name}"></td>
                         <td class="">
-                            <!--             <button type="button" data-toggle="modal"
+                            &lt;!&ndash;             <button type="button" data-toggle="modal"
                                                  data-target="#orgDetailsModal"
                                                  class="btn btn-outline-info">Detail
-                                         </button>-->
+                                         </button>&ndash;&gt;
                             <a th:href="@{/organization/detail/{id}/(id = ${organization.id})}"
                                class="btn btn-outline-info">Detail</a>
                             <a th:href="@{/organization/delete/{id}/(id=${organization.id})}"
@@ -125,7 +151,7 @@
                             <a th:href="@{/admin/create/{id}/(id=${organization.id})}"
                                class="btn btn-outline-success ml-5">CREATE ADMIN</a>
 
-                            <!--       <button type="button" data-toggle="modal"
+                            &lt;!&ndash;       <button type="button" data-toggle="modal"
                                            data-target="#orgUpdateModal"
                                            class="btn btn-outline-info">Update
                                    </button>
@@ -170,11 +196,11 @@
                                                </div>
                                            </div>
                                        </div>
-                                   </div>-->
+                                   </div>&ndash;&gt;
                         </td>
                     </tr>
                     </tbody>
-                </table>
+                </table>-->
             </div>
         </nav>
 
