@@ -18,7 +18,6 @@
         <div class="link">
             <a th:href="@{/panel/superAdmin/}">Home</a>
             <a th:href="@{/superAdmin/list/}">Super Admin control</a>
-            <!--            <a th:href="@{/organization/}">User control</a>-->
         </div>
     </main>
 
@@ -45,10 +44,8 @@
                 </div>
 
             </div>
-
-            <!--            <section th:include="popups.html :: create_organization_modal"></section>-->
-            <div class="" style="width:100%;margin-left: 150px">
-                <button type="button" class="btn btn-success my-3" data-toggle="modal"
+            <div class="" style="width:100%;margin-left: 120px">
+                <button type="button" class="btn btn-success mt-3" data-toggle="modal"
                         data-target="#createOrgModal">+ Create Organization
                 </button>
                 <div class="modal fade" id="createOrgModal" tabindex="-1" role="dialog"
@@ -102,7 +99,8 @@
                             <p>Export</p>
                         </div>
                         <div th:each="organization : ${organizations}">
-                            <a th:href="@{/organization/detail/{id}/(id = ${organization.id})}" style="text-decoration: none">
+                            <a th:href="@{/organization/detail/{id}/(id = ${organization.id})}"
+                               style="text-decoration: none">
                                 <div class="box">
                                     <p th:text="${organization.name}"></p>
                                     <div class="box-text">
@@ -121,163 +119,10 @@
                         </div>
                     </div>
                 </div>
-                <<!--table class="table">
-                    <thead class="thead-light">
-                    <tr>
-                        &lt;!&ndash;                        <th scope="col">#</th>&ndash;&gt;
-                        <th scope="col">Logo</th>
-                        <th scope="col">Name</th>
-                        <th scope="col" class="ml-5">Action</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr th:each="organization,iter :  ${organizations}">
-                        &lt;!&ndash;                        <td th:text="${iter.count}"></td>&ndash;&gt;
-                        <td><img th:src="@{${organization.logo}}"
-                                 style="width: 100px;height: 100px; border-radius: 10px;border: 4px solid #7e33e0"/>
-                        </td>
-                        <td th:text="${organization.name}"></td>
-                        <td class="">
-                            &lt;!&ndash;             <button type="button" data-toggle="modal"
-                                                 data-target="#orgDetailsModal"
-                                                 class="btn btn-outline-info">Detail
-                                         </button>&ndash;&gt;
-                            <a th:href="@{/organization/detail/{id}/(id = ${organization.id})}"
-                               class="btn btn-outline-info">Detail</a>
-                            <a th:href="@{/organization/delete/{id}/(id=${organization.id})}"
-                               class="btn btn-outline-danger">Delete</a>
-                            <a th:href="@{/organization/update/{id}/(id=${organization.id})}"
-                               class="btn btn-outline-primary">Update</a>
-                            <a th:href="@{/admin/create/{id}/(id=${organization.id})}"
-                               class="btn btn-outline-success ml-5">CREATE ADMIN</a>
-
-                            &lt;!&ndash;       <button type="button" data-toggle="modal"
-                                           data-target="#orgUpdateModal"
-                                           class="btn btn-outline-info">Update
-                                   </button>
-                                   <div class="modal" id="orgUpdateModal" >
-                                       <div class="modal-dialog " role="document">
-                                           <div class="modal-content">
-                                               <div class="modal-header">
-                                                   <h5 class="modal-title" id="orgUpdateModalLabel">Update Organization</h5>
-                                                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                       <span aria-hidden="true">&times;</span>
-                                                   </button>
-                                               </div>
-
-                                               <div class="modal-body">
-                                                   <form th:action="@{/organization/update/{id}/(id=${organization.id})}" th:method="post" enctype="multipart/form-data">
-
-                                                       <div class="form-group">
-                                                           <label for="update_name">Name</label>
-                                                           <input type="text" class="form-control" th:value="${organization.name}" id="update_name" name="name"/>
-                                                       </div>
-
-                                                       &lt;!&ndash;        <div class="form-group">
-                                                                   <label for="logo">Logo</label>
-                                                                   <input type="file" class="form-control" id="logo" name="logo"/>
-                                                               </div>&ndash;&gt;
-
-                                                       <div class="form-group">
-                                                           <label for="update_code">Code</label>
-                                                           <input type="text" class="form-control" th:value="${organization.code}" id="update_code" name="code"/>
-                                                       </div>
-                                                       <div class="form-group">
-                                                           <label for="update_email">Email address</label>
-                                                           <input type="email" class="form-control" th:value="${organization.email}" name="email" id="update_email"/>
-                                                       </div>
-
-                                                       <button type="submit" class="btn btn-primary mt-4">➕ Save</button>
-                                                   </form>
-
-                                               </div>
-                                               <div class="modal-footer">
-                                                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                               </div>
-                                           </div>
-                                       </div>
-                                   </div>&ndash;&gt;
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>-->
             </div>
         </nav>
-
-
     </aside>
 </header>
-
-<!--
-<div class="modal fade" id="createOrgModal" tabindex="-1" role="dialog" aria-labelledby="createOrgModalLabel"
-     aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="createOrgModalLabel">Add New Book</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form th:action="@{/organization/create/}" th:method="post" enctype="multipart/form-data">
-
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" class="form-control" id="name" name="name"/>
-                    </div>
-
-
-                    <div class="form-group">
-                        <label for="logo">Logo</label>
-                        <input type="file" class="form-control" id="logo" name="logo"/>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="code">Code</label>
-                        <input type="text" class="form-control" id="code" name="code"/>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email address</label>
-                        <input type="email" class="form-control" name="email" id="email"/>
-                    </div>
-
-                    <button type="submit" class="btn btn-primary mt-4">➕ Save</button>
-                </form>
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
--->
-<!--
-
-<div class="modal fade" id="orgDetailsModal" tabindex="-1" role="dialog" aria-labelledby="orgDetailsModalLabel"
-     aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="orgDetailsModalLabel">Organization Details</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-
-            <div class="modal-body">
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
--->
-
-
 <script>
     const menu = document.querySelector(".menu-bar")
     const main = document.querySelector("main")
