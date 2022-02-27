@@ -27,7 +27,8 @@ public class PanelController extends AbstractController<UserService> {
 //    }
 
     @RequestMapping(value = "admin/", method = RequestMethod.GET)
-    public String projectPage() {
+    public String projectPage(Model model) {
+        model.addAttribute("project", service.getAll(new GenericCriteria()));
         return "panel/admin";
     }
 
