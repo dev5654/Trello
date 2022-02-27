@@ -7,8 +7,10 @@
         <div class="menu-bar">
             <i class="fas fa-bars"></i>
         </div>
-        <div class="logo">
-            <img src="/images/logo.png" alt="">
+        <div class="logo" style=" margin-right: 20px;
+        margin-left: -60px;
+        margin-top: -100px;">
+            <img src="/images/logo.png" alt="" style="width: 100%">
         </div>
 
         <div class="link">
@@ -40,12 +42,10 @@
                         <i class="fas fa-angle-down"></i>
                     </p>
                 </div>
-
             </div>
-
         </nav>
 
-        <div class="container" style="width:100%;margin-left: 150px">
+        <div class="container">
             <button type="button" class="btn btn-success my-3" data-toggle="modal"
                     data-target="#createProjectModal">
                 <i class="fa fa-plus"></i> + Create Project
@@ -82,7 +82,7 @@
                     </div>
                 </div>
             </div>
-            <table class="table">
+            <!--<table class="table">
                 <thead class="thead-light">
                 <tr>
                     <th scope="col">#</th>
@@ -110,7 +110,30 @@
                     </th>
                 </tr>
                 </tbody>
-            </table>
+            </table>-->
+            <div class="content" style="grid-template-columns: 1000px">
+                <div class="contents">
+                    <div class="content-text" style="margin-bottom: 20px">
+                        <p>Organizations</p>
+                        <p>Export</p>
+                    </div>
+                    <div th:each="project : ${projects}">
+                        <a th:href="@{/project/detail/{id}/(id = ${project.id})}"
+                           style="text-decoration: none">
+                            <div class="box">
+                                <p th:text="${project.name}"></p>
+                                <div class="box-text">
+                                    </span>
+                                    <span>
+                                        <img th:src="@{/images/sunrise.png}" alt="">
+                                        <span th:text="${project.tzPath}"></span>
+                                    </span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
     </aside>
 </header>

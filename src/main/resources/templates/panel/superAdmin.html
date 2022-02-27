@@ -8,14 +8,15 @@
         <div class="menu-bar">
             <i class="fas fa-bars"></i>
         </div>
-        <div class="logo">
-            <img src="/images/logo.png">
+        <div class="logo" style=" margin-right: 20px;
+        margin-left: -60px;
+        margin-top: -100px;">
+            <img src="/images/logo.png" alt="" style="width: 100%">
         </div>
 
         <div class="link">
             <a th:href="@{/organization/organizations/}"> Organization</a>
             <a th:href="@{/superAdmin/lists/}">Super Admin control</a>
-            <!--            <a th:href="@{/user/admin/}">Admin control</a>-->
         </div>
     </main>
 
@@ -43,67 +44,6 @@
 
             </div>
         </nav>
-
-        <!--<div class="container">
-            &lt;!&ndash;            <h3 th:text="${user.fullName}"></h3>&ndash;&gt;
-            <div class="content">
-                <div class="contents">
-                    <div class="content-text">
-                        <p>Users</p>
-                        <p>Export</p>
-                    </div>
-                    <div class="box" th:each="user,iter :  ${users}">
-                        <p th:text="${user.fullName}"></p>
-                        <span><img th:src="@{${user.profileImage}}" alt=""></span>
-                        <div class="box-text">
-                            <span th:text="${user.username}"></span>
-                            <span th:text="${user.phone}"></span>
-                            <span th:text="${user.email}"></span>
-                            <span th:text="${user.language}"></span>
-                            <span th:text="${user.created_at}"></span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="content-box">
-                    <div class="content-text">
-                        <p>Tasks</p>
-                    </div>
-                    <div class="box">
-
-                        <div class="box-text">
-                            <p>ОсОО “Energi.kg”</p>
-                            <span>
-                                        <img src="./assets/imges/sunrise.png" alt="">12/04/2021
-                                    </span>
-                        </div>
-
-                    </div>
-
-                    <div class="box">
-
-                        <div class="box-text">
-                            <p>ОсОО “Energi.kg”</p>
-                            <span>
-                                        <img src="./assets/imges/sunrise.png" alt="">12/04/2021
-                                    </span>
-                        </div>
-
-                    </div>
-
-                    <div class="box">
-
-                        <div class="box-text">
-                            <p>ОсОО “Energi.kg”</p>
-                            <span>
-                                        <img src="./assets/imges/sunrise.png" alt="">12/04/2021
-                                    </span>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div> -->
 
         <div class="container">
             <h3>Super admin</h3>
@@ -172,7 +112,6 @@
                 </div>
             </div>
         </div>
-
     </aside>
 
 </header>
