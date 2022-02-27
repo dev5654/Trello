@@ -74,5 +74,13 @@ public class UserController extends AbstractController<UserService> {
         model.addAttribute("superAdmins", superAdminList);
         return "superAdmin/list";
     }
+
+
+    @RequestMapping(value = "/superAdmin/detail/{id}/" , method = RequestMethod.GET)
+    public String detail(Model model, @PathVariable(name = "id") Long id) {
+        model.addAttribute("superAdmin", service.get(id));
+        return "superAdmin/detail";
+    }
+
 }
 
