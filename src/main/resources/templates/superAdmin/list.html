@@ -16,8 +16,8 @@
         </div>
 
         <div class="link">
+            <a th:href="@{/panel/superAdmin/}"> Home </a>
             <a th:href="@{/superAdmin/lists/}">Super Admin control</a>
-            <a th:href="@{/panel/superAdmin/}"> Super Admin panel </a>
             <!--            <a th:href="@{/organization/}">User control</a>-->
         </div>
     </main>
@@ -47,18 +47,17 @@
             </div>
 
             <!--            <section th:include="popups.html :: create_organization_modal"></section>-->
-            <div class="container" style="width:100%;margin-left: 150px">
+            <div class="container" style="width:100%;">
                 <button type="button" class="btn btn-success my-3" data-toggle="modal"
-                        data-target="#createBookModal">
-                    <i class="fa fa-plus"></i> + Create Organization
+                        data-target="#createSuperAdminModal">+ Create Super Admin
                 </button>
-                <div class="modal fade" id="createBookModal" tabindex="-1" role="dialog"
-                     aria-labelledby="createBookModalLabel"
+                <div class="modal fade" id="createSuperAdminModal" tabindex="-1" role="dialog"
+                     aria-labelledby="createSuperAdminModalLabel"
                      aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="createBookModalLabel">Create Super Admin</h5>
+                                <h5 class="modal-title" id="createSuperAdminModalLabel">Create Super Admin</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true" class="text-danger">&times;</span>
                                 </button>
@@ -66,46 +65,42 @@
                             <form th:action="@{/superadmin/create/}" th:method="post"
                                   enctype="multipart/form-data">
 
-                                <div class="form-group">
-                                    <label for="name">User Name</label>
-                                    <input type="text" class="form-control" id="name" name="username"/>
-                                </div>
-                                <div class="form-group">
-                                    <label for="password">Password</label>
-                                    <input type="password" class="form-control" id="password" name="password"/>
-                                </div>
-
-
-                                <div class="form-group">
-                                    <label for="logo">profile image</label>
-                                    <input type="file" class="form-control" id="logo" name="profileImage"/>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="phone">Phone</label>
-                                    <input type="text" class="form-control" id="phone" name="phone"/>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="email">Email address</label>
-                                    <input type="email" class="form-control" name="email" id="email"/>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="language">Language</label>
-                                    <select id="language" name="language" class="form-control">
-                                        <option>UZ</option>
-                                        <option>RU</option>
-                                        <option>EN</option>
-                                    </select>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="role">ROLE</label>
-                                    <select id="role" name="role" class="form-control">
-                                        <!--                                <option name="role_name" value="SUPER_ADMIN">SUPER_ADMIN</option>-->
-                                        <option name="role_name" value="SUPER_ADMIN">SUPER_ADMIN</option>
-                                    </select>
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <label for="name">User Name</label>
+                                        <input type="text" class="form-control" id="name" name="username"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="password">Password</label>
+                                        <input type="password" class="form-control" id="password" name="password"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="logo">profile image</label>
+                                        <input type="file" class="form-control" id="logo" name="profileImage"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="phone">Phone</label>
+                                        <input type="text" class="form-control" id="phone" name="phone"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email">Email address</label>
+                                        <input type="email" class="form-control" name="email" id="email"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="language">Language</label>
+                                        <select id="language" name="language" class="form-control">
+                                            <option>UZ</option>
+                                            <option>RU</option>
+                                            <option>EN</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="role">ROLE</label>
+                                        <select id="role" name="role" class="form-control">
+                                            <!--                                <option name="role_name" value="SUPER_ADMIN">SUPER_ADMIN</option>-->
+                                            <option name="role_name" value="SUPER_ADMIN">SUPER_ADMIN</option>
+                                        </select>
+                                    </div>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="submit" class="btn btn-success">Save</button>
@@ -139,24 +134,18 @@
                         <td th:text="${superAdmin.language}"></td>
                         <td th:text="${superAdmin.phone}"></td>
                         <td th:text="${superAdmin.email}"></td>
-                        <td class="">
-                            <!--             <button type="button" data-toggle="modal"
-                                                 data-target="#orgDetailsModal"
-                                                 class="btn btn-outline-info">Detail
-                                         </button>-->
+                        <td class="logo ml-5" style="margin: 0 50px" >
                             <a th:href="@{/superAdmin/detail/{id}/(id = ${superAdmin.id})}"
-                               class="btn btn-outline-info">Detail</a>
+                               class="btn btn-outline-info mx-4">Detail</a>
                             <a th:href="@{/superAdmin/delete/{id}/(id=${superAdmin.id})}"
-                               class="btn btn-outline-danger">Delete</a>
+                               class="btn btn-outline-danger mx-4">Delete</a>
                             <a th:href="@{/superAdmin/update/{id}/(id=${superAdmin.id})}"
-                               class="btn btn-outline-primary">Update</a>
+                               class="btn btn-outline-primary mx-4">Update</a>
                     </tr>
                     </tbody>
                 </table>
             </div>
         </nav>
-
-
     </aside>
 </header>
 

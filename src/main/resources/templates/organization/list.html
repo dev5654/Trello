@@ -16,8 +16,8 @@
         </div>
 
         <div class="link">
+            <a th:href="@{/panel/superAdmin/}">Home</a>
             <a th:href="@{/superAdmin/list/}">Super Admin control</a>
-            <a th:href="@{/panel/superAdmin/}"> Super admin Panel</a>
             <!--            <a th:href="@{/organization/}">User control</a>-->
         </div>
     </main>
@@ -49,8 +49,7 @@
             <!--            <section th:include="popups.html :: create_organization_modal"></section>-->
             <div class="container" style="width:100%;margin-left: 150px">
                 <button type="button" class="btn btn-success my-3" data-toggle="modal"
-                        data-target="#createOrgModal">
-                    <i class="fa fa-plus"></i> + Create Organization
+                        data-target="#createOrgModal">+ Create Organization
                 </button>
                 <div class="modal fade" id="createOrgModal" tabindex="-1" role="dialog"
                      aria-labelledby="createOrgModalLabel"

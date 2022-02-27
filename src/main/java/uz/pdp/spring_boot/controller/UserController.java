@@ -26,8 +26,8 @@ public class UserController extends AbstractController<UserService> {
 
     @PreAuthorize("hasAnyRole('SUPER_ADMIN','ADMIN')")
     @RequestMapping(value = "/admin/create/{id}", method = RequestMethod.GET)
-    public String adminPage(Model model ,@PathVariable String id) {
-        model.addAttribute("organization" , id);
+    public String adminPage(Model model, @PathVariable String id) {
+        model.addAttribute("organization", id);
         return "admin/create";
     }
 
@@ -62,23 +62,16 @@ public class UserController extends AbstractController<UserService> {
 
     @PreAuthorize("hasAnyRole('SUPER_ADMIN')")
     @RequestMapping(value = "/superAdmin/lists/", method = RequestMethod.GET)
-    public String superAdminPage(Model model ) {
+    public String superAdminPage(Model model) {
         List<UserDto> all = service.getAll(new GenericCriteria());
         List<UserDto> superAdminList = new ArrayList<>();
         for (UserDto dto : all) {
-            if (dto.getRole().getCode().equals("SUPER_ADMIN")){
+            if (dto.getRole().getCode().equals("SUPER_ADMIN")) {
                 superAdminList.add(dto);
             }
         }
-        model.addAttribute("superAdmins" , superAdminList);
+        model.addAttribute("superAdmins", superAdminList);
         return "superAdmin/list";
-}
-
-
-
-
-
-
-
+    }
 }
 
