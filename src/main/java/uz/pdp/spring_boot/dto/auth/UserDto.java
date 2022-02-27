@@ -28,11 +28,11 @@ public class UserDto extends GenericDto {
     private Timestamp created_at;
     private boolean active;
     private boolean blocked;
+    private Organization organization;
     private AuthRole role;
 
     @Builder(builderMethodName = "childBuilder")
-
-    public UserDto(Long id, String username, String password, String language, String phone, String email, String fullName, String profileImage, Timestamp created_at, boolean active, boolean blocked, AuthRole role) {
+    public UserDto(Long id, String username, String password, String language, String phone, String email, String fullName, String profileImage, Timestamp created_at, boolean active, boolean blocked, Organization organization, AuthRole role) {
         super(id);
         this.username = username;
         this.password = password;
@@ -44,6 +44,7 @@ public class UserDto extends GenericDto {
         this.created_at = created_at;
         this.active = active;
         this.blocked = blocked;
+        this.organization = organization;
         this.role = role;
     }
 }

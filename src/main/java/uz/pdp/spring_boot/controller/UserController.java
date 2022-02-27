@@ -10,7 +10,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import uz.pdp.spring_boot.criteria.GenericCriteria;
 import uz.pdp.spring_boot.dto.auth.UserCreateDto;
+import uz.pdp.spring_boot.dto.auth.UserDto;
 import uz.pdp.spring_boot.services.auth.UserService;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class UserController extends AbstractController<UserService> {
@@ -34,6 +38,7 @@ public class UserController extends AbstractController<UserService> {
         return "admin/create";
     }*/
 
+
     @RequestMapping(value = "/admin/create/{id}", method = RequestMethod.POST)
     public String create(@ModelAttribute UserCreateDto dto) {
 //       dto.setOrganizationId(Long.valueOf(id));
@@ -41,10 +46,39 @@ public class UserController extends AbstractController<UserService> {
         return "redirect:/organization/organizations/";
     }
 
-    @RequestMapping(value = "/admin/list/", method = RequestMethod.GET)
+
+    @RequestMapping(value = "/superadmin/create/", method = RequestMethod.POST)
+    public String superAdminCreate(@ModelAttribute UserCreateDto dto) {
+//       dto.setOrganizationId(Long.valueOf(id));
+        service.create(dto);
+        return "redirect:/superAdmin/lists/";
+    }
+
+ /*   @RequestMapping(value = "/admin/list/", method = RequestMethod.GET)
     public String listPage(Model model) {
         model.addAttribute("users", service.getAll(new GenericCriteria()));
         return "admin/list";
-    }
+    }*/
+
+    @PreAuthorize("hasAnyRole('SUPER_ADMIN')")
+    @RequestMapping(value = "/superAdmin/lists/", method = RequestMethod.GET)
+    public String superAdminPage(Model model ) {
+        List<UserDto> all = service.getAll(new GenericCriteria());
+        List<UserDto> superAdminList = new ArrayList<>();
+        for (UserDto dto : all) {
+            if (dto.getRole().getCode().equals("SUPER_ADMIN")){
+                superAdminList.add(dto);
+            }
+        }
+        model.addAttribute("superAdmins" , superAdminList);
+        return "superAdmin/list";
+}
+
+
+
+
+
+
+
 }
 
