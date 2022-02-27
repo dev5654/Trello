@@ -107,6 +107,7 @@ public class UserController extends AbstractController<UserService> {
                 memberList.add(dto);
             }
         }
+
         model.addAttribute("members", memberList);
         return "user/memberList";
     }
