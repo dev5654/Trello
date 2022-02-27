@@ -2,12 +2,12 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:include="fragments.html :: head(title='Project deteils', path='/css/index.css')"></head>
 <main>
-    <div class="container">
+    <div class="container" style="overflow:hidden;">
         <h2 th:text="${project.name}" class="text-primary"></h2>
         <div class="row">
             <div class="col-4">
                 <div class="card border-primary mb-3" style="max-width: 18rem;">
-                    <div class="card-header">Organization logo</div>
+                    <div class="card-header">Project TZ</div>
                     <div class="card-body text-primary">
                         <img th:src="@{${project.tzPath}}" alt="" class="card-img">
                     </div>
@@ -17,6 +17,12 @@
                 <ul class="list-group">
                     <li class="list-group-item active" th:text="${project.name}"></li>
                 </ul>
+                <a th:href="@{/project/delete/{id}/(id=${project.id})}"
+                   class="btn btn-outline-danger">Delete</a>
+                <a th:href="@{/project/update/{id}/(id=${project.id})}"
+                   class="btn btn-outline-primary">Update</a>
+                <a th:href="@{/admin/create/{id}/(id=${project.id})}"
+                   class="btn btn-outline-success ml-5">Add Member</a>
                 <a th:href="@{/project/projects/}" class="btn btn-warning my-4 p-2"><= Back</a>
             </div>
         </div>

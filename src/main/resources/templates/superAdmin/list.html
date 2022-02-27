@@ -32,6 +32,7 @@
                 <input type="text" placeholder="Search">
             </div>
 
+
             <div class="user-information">
                 <div class="icon">
                     <a th:href="@{/auth/logout}" class="btn btn-outline-danger">logout</a>
@@ -111,10 +112,10 @@
                         </div>
                     </div>
                 </div>
-                <table class="table">
+             <!--   <table class="table">
                     <thead class="thead-light">
                     <tr>
-                        <!--                        <th scope="col">#</th>-->
+                        &lt;!&ndash;                        <th scope="col">#</th>&ndash;&gt;
                         <th scope="col">No</th>
                         <th scope="col">Logo</th>
                         <th scope="col">Name</th>
@@ -143,7 +144,34 @@
                                class="btn btn-outline-primary mx-4">Update</a>
                     </tr>
                     </tbody>
-                </table>
+                </table>-->
+                <div class="content" style="grid-template-columns: 1000px">
+                    <div class="contents">
+                        <div class="content-text" style="margin-bottom: 20px">
+                            <p>Organizations</p>
+                            <p>Export</p>
+                        </div>
+                        <div th:each="superAdmin : ${superAdmins}">
+                            <a th:href="@{/superAdmin/detail/{id}/(id= ${superAdmin.id})}"
+                               style="text-decoration: none">
+                                <div class="box">
+                                    <p th:text="${superAdmin.username}"></p>
+                                    <div class="box-text">
+                                        </span>
+                                        <span>
+                                        <img th:src="@{/images/sunrise.png}" alt="">
+                                        <span th:text="${superAdmin.email}"></span>
+                                    </span>
+                                        <span>
+                                       <img th:src="@{/images/users.png}" alt="">
+                                        <span th:text="${superAdmin.getRole().getCode()}"></span>
+                                    </span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </nav>
     </aside>

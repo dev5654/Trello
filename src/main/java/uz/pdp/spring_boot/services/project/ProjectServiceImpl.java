@@ -1,12 +1,15 @@
 package uz.pdp.spring_boot.services.project;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+import uz.pdp.spring_boot.configs.security.UserDetails;
 import uz.pdp.spring_boot.criteria.GenericCriteria;
 import uz.pdp.spring_boot.dto.project.ProjectCreateDto;
 import uz.pdp.spring_boot.dto.project.ProjectDto;
 import uz.pdp.spring_boot.dto.project.ProjectUpdateDto;
+import uz.pdp.spring_boot.entity.auth.AuthUser;
 import uz.pdp.spring_boot.entity.project.Project;
 import uz.pdp.spring_boot.mapper.ProjectMapper;
 import uz.pdp.spring_boot.reposiroty.project.ProjectRepository;
@@ -35,10 +38,11 @@ public class ProjectServiceImpl extends AbstractService<ProjectRepository, Proje
         String tzPath = fileStorageService.store(file);
         Project project = mapper.fromCreateDto(createDto);
         project.setTzPath(tzPath);
-//        project.setOrganization(repository.findOrganizationById(createDto.getName()));
-        project.setCreateby(1L);
+        AuthUser authUser  = ((UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUser();
+        project.setOrganization(authUser.getOrganization());
+        project.setCreateby(authUser.getId());
         repository.save(project);
-        return 1L;
+        return project.getId();
     }
 
     @Override

@@ -50,6 +50,7 @@ public class UserController extends AbstractController<UserService> {
     @RequestMapping(value = "/superadmin/create/", method = RequestMethod.POST)
     public String superAdminCreate(@ModelAttribute UserCreateDto dto) {
 //       dto.setOrganizationId(Long.valueOf(id));
+        dto.setOrganizationId(1L);
         service.create(dto);
         return "redirect:/superAdmin/lists/";
     }
@@ -73,5 +74,13 @@ public class UserController extends AbstractController<UserService> {
         model.addAttribute("superAdmins", superAdminList);
         return "superAdmin/list";
     }
+
+
+    @RequestMapping(value = "/superAdmin/detail/{id}/" , method = RequestMethod.GET)
+    public String detail(Model model, @PathVariable(name = "id") Long id) {
+        model.addAttribute("superAdmin", service.get(id));
+        return "superAdmin/detail";
+    }
+
 }
 

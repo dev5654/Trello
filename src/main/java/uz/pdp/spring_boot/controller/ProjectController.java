@@ -34,7 +34,7 @@ public class ProjectController extends AbstractController<ProjectService> {
 //    public String createPage() {
 //        return "project/create";
 //    }
-
+    @PreAuthorize("hasAnyRole('ADMIN')")
     @RequestMapping(value = "create/", method = RequestMethod.POST)
     public String create(@ModelAttribute ProjectCreateDto dto) {
         service.create(dto);

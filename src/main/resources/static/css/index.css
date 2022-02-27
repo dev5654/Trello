@@ -12,7 +12,22 @@ header {
     display: grid;
     grid-template-columns: 300px 1fr;
     height: 100vh;
-    /*overflow-y: scroll;*/
+    /*overflow-x: hidden;*/
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.container-org {
+    margin-left: 50px;
+    width: 1200px;
+    padding: 10px 20px 60px 20px;
+    overflow: scroll;
+    height: 620px;
+}
+
+.box:hover {
+    transition: 0.4s;
+    transform: scale(1.01);
 }
 
 header main {
@@ -155,6 +170,7 @@ nav .input {
 .container {
     width: 100%;
     padding: 10px 20px 60px 20px;
+    overflow: scroll;
     height: 600px;
 }
 

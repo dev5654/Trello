@@ -7,8 +7,10 @@
         <div class="menu-bar">
             <i class="fas fa-bars"></i>
         </div>
-        <div class="logo">
-            <img src="/images/logo.png" alt="">
+        <div class="logo" style=" margin-right: 20px;
+        margin-left: -60px;
+        margin-top: -100px;">
+            <img src="/images/logo.png" alt="" style="width: 100%">
         </div>
 
         <div class="link">
@@ -40,12 +42,10 @@
                         <i class="fas fa-angle-down"></i>
                     </p>
                 </div>
-
             </div>
-
         </nav>
 
-        <div class="container" style="width:100%;margin-left: 150px">
+        <div class="container">
             <button type="button" class="btn btn-success my-3" data-toggle="modal"
                     data-target="#createProjectModal">
                 <i class="fa fa-plus"></i> + Create Project
@@ -82,35 +82,87 @@
                     </div>
                 </div>
             </div>
-            <table class="table">
-                <thead class="thead-light">
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Project TZ</th>
-                    <th scope="col" class="ml-5">Action</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr th:each="project,iter :  ${projects}">
-                    <th th:text="${iter.count}"></th>
-                    <th th:text="${project.name}"></th>
-                    <td><img th:src="@{${project.tzPath}}"
-                             style="width: 100px;height: 100px; border-radius: 10px;border: 4px solid #7e33e0"/>
-                    </td>
-                    <th class="icons">
+            <div class="content" style="grid-template-columns: 750px 300px;">
+                <div class="contents">
+                    <div class="content-text" style="margin-bottom: 20px">
+                        <p>Projects</p>
+                        <p>Export</p>
+                    </div>
+                    <div th:each="project : ${projects}">
                         <a th:href="@{/project/detail/{id}/(id = ${project.id})}"
-                           class="btn btn-outline-info">Detail</a>
-                        <a th:href="@{/project/delete/{id}/(id=${project.id})}"
-                           class="btn btn-outline-danger">Delete</a>
-                        <a th:href="@{/project/update/{id}/(id=${project.id})}"
-                           class="btn btn-outline-primary">Update</a>
-                        <a th:href="@{/admin/create/{id}/(id=${project.id})}"
-                           class="btn btn-outline-success ml-5">Add Member</a>
-                    </th>
-                </tr>
-                </tbody>
-            </table>
+                           style="text-decoration: none">
+                            <div class="box">
+                                <p th:text="${project.name}"></p>
+                                <div class="box-text">
+                                    </span>
+                                    <span>
+                                        <img th:src="@{/images/sunrise.png}" alt="">
+                                        <span th:text="${project.tzPath}"></span>
+                                    </span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="content-box">
+                    <div class="content-text">
+                        <p>Tasks</p>
+                    </div>
+                    <div class="box">
+                        <div class="box-text">
+                            <p>ОсОО “Energi.kg”</p>
+                            <span>
+                                        <img src="./assets/imges/sunrise.png" alt="">12/04/2021
+                                    </span>
+                        </div>
+                    </div>
+
+                    <div class="box">
+                        <div class="box-text">
+                            <p>ОсОО “Energi.kg”</p>
+                            <span>
+                                        <img src="./assets/imges/sunrise.png" alt="">12/04/2021
+                                    </span>
+                        </div>
+                    </div>
+
+                    <div class="box">
+                        <div class="box-text">
+                            <p>ОсОО “Energi.kg”</p>
+                            <span>
+                                        <img src="./assets/imges/sunrise.png" alt="">12/04/2021
+                                    </span>
+                        </div>
+                    </div>
+
+                    <div class="box">
+                        <div class="box-text">
+                            <p>ОсОО “Energi.kg”</p>
+                            <span>
+                                        <img src="./assets/imges/sunrise.png" alt="">12/04/2021
+                                    </span>
+                        </div>
+                    </div>
+
+                    <div class="box">
+                        <div class="box-text">
+                            <p>ОсОО “Energi.kg”</p>
+                            <span>
+                                        <img src="./assets/imges/sunrise.png" alt="">12/04/2021
+                                    </span>
+                        </div>
+                    </div>
+
+                    <div class="box">
+                        <div class="box-text">
+                            <p>ОсОО “Energi.kg”</p>
+                            <span>
+                                        <img src="./assets/imges/sunrise.png" alt="">12/04/2021
+                                    </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </aside>
 </header>
