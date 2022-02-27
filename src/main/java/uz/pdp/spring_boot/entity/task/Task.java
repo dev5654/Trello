@@ -3,12 +3,12 @@ package uz.pdp.spring_boot.entity.task;
 import lombok.Getter;
 import lombok.Setter;
 import uz.pdp.spring_boot.entity.BaseEntity;
-import uz.pdp.spring_boot.entity.organization.Organization;
 import uz.pdp.spring_boot.entity.project.ProjectColumn;
-import uz.pdp.spring_boot.enums.Level;
 
 import javax.persistence.*;
 import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author : Oyatjon  -> @data :2/23/2022 22:21
@@ -33,33 +33,28 @@ public class Task implements BaseEntity {
     private String description;
 
 
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "project_column_id")
     private ProjectColumn projectColumn;
 
 
-    @Convert(disableConversion = true)
+  /*  @Convert(disableConversion = true)
     @Column(name = "deadline")
-    private Instant deadline;
+    private Instant deadline;*/
 
 
     @Lob
     @Column(name = "orders")
     private Integer orders;
 
-    @Lob
-    @Column(name = "level")
-    private Level level;
 
 
-
-
-
-    @Convert(disableConversion = true)
+   /* @Convert(disableConversion = true)
     @Column(name = "created_at")
-    private Instant createdat;
+    private Instant createdat;*/
 
-    @Column(name = "created_by", nullable = false)
+    @Column(name = "created_by")
     private Long createby;
 
     @Convert(disableConversion = true)
@@ -68,4 +63,7 @@ public class Task implements BaseEntity {
 
     @Column(name = "updated_by")
     private Long updateby;
+
+    @OneToOne
+    private TaskLevel taskLevel;
 }

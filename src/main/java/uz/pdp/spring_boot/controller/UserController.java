@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import uz.pdp.spring_boot.criteria.GenericCriteria;
 import uz.pdp.spring_boot.dto.auth.UserCreateDto;
 import uz.pdp.spring_boot.dto.auth.UserDto;
+import uz.pdp.spring_boot.dto.auth.UserUpdateDto;
 import uz.pdp.spring_boot.services.auth.UserService;
 
 import java.util.ArrayList;
@@ -50,7 +51,6 @@ public class UserController extends AbstractController<UserService> {
     @RequestMapping(value = "/superadmin/create/", method = RequestMethod.POST)
     public String superAdminCreate(@ModelAttribute UserCreateDto dto) {
 //       dto.setOrganizationId(Long.valueOf(id));
-        dto.setOrganizationId(1L);
         service.create(dto);
         return "redirect:/superAdmin/lists/";
     }
@@ -75,12 +75,26 @@ public class UserController extends AbstractController<UserService> {
         return "superAdmin/list";
     }
 
-
-    @RequestMapping(value = "/superAdmin/detail/{id}/" , method = RequestMethod.GET)
+    @RequestMapping(value = "/superAdmin/detail/{id}/", method = RequestMethod.GET)
     public String detail(Model model, @PathVariable(name = "id") Long id) {
         model.addAttribute("superAdmin", service.get(id));
         return "superAdmin/detail";
     }
+
+    @PreAuthorize("hasRole('SUPER_ADMIN')")
+    @RequestMapping(value = "/superAdmin/update/{id}/", method = RequestMethod.GET)
+    public String superAdminUpdatePage(Model model, @PathVariable(name = "id") Long id) {
+        model.addAttribute("superAdmin", service.get(id));
+        return "superAdmin/update";
+    }
+
+    @PreAuthorize("hasRole('SUPER_ADMIN')")
+    @RequestMapping(value = "/superAdmin/update", method = RequestMethod.POST)
+    public String update(@ModelAttribute UserUpdateDto dto) {
+        service.update(dto);
+        return "redirect:/superAdmin/lists/";
+    }
+
 
 }
 

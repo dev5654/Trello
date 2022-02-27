@@ -35,7 +35,7 @@ public class TaskMember {
     @Column(name = "created_at")
     private Instant createdat;
 
-    @Column(name = "created_by", nullable = false)
+    @Column(name = "created_by")
     private Long createby;
 
     @Convert(disableConversion = true)

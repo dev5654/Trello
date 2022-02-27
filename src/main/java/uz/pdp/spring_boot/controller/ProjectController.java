@@ -13,9 +13,13 @@ import uz.pdp.spring_boot.dto.project.ProjectCreateDto;
 import uz.pdp.spring_boot.dto.project.ProjectUpdateDto;
 import uz.pdp.spring_boot.services.project.ProjectService;
 
+
+
+
 @Controller
 @RequestMapping("/project/*")
 public class ProjectController extends AbstractController<ProjectService> {
+
 
     @Autowired
     public ProjectController(ProjectService service) {
@@ -64,7 +68,7 @@ public class ProjectController extends AbstractController<ProjectService> {
     @RequestMapping(value = "update", method = RequestMethod.POST)
     public String update(@ModelAttribute ProjectUpdateDto dto) {
         service.update(dto);
-        return "redirect:/";
+        return "redirect:/project/list/";
     }
 
 

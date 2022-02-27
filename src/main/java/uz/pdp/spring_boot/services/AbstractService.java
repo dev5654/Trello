@@ -1,7 +1,5 @@
 package uz.pdp.spring_boot.services;
 
-import org.springframework.security.core.context.SecurityContextHolder;
-import uz.pdp.spring_boot.configs.security.UserDetails;
 import uz.pdp.spring_boot.mapper.Mapper;
 import uz.pdp.spring_boot.reposiroty.AbstractRepository;
 import uz.pdp.spring_boot.utils.BaseUtils;
@@ -20,11 +18,14 @@ public abstract class AbstractService<
     protected final M mapper;
     protected final V validator;
     protected final BaseUtils baseUtils;
- //  protected final UserDetails session = (uz.pdp.spring_boot.configs.security.UserDetails) SecurityContextHolder.getContext().getAuthentication();
+
+    //  protected final UserDetails session = (uz.pdp.spring_boot.configs.security.UserDetails) SecurityContextHolder.getContext().getAuthentication();
     protected AbstractService(R repository, M mapper, V validator, BaseUtils baseUtils) {
         this.repository = repository;
         this.mapper = mapper;
         this.validator = validator;
         this.baseUtils = baseUtils;
     }
+
+
 }

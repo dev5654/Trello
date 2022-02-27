@@ -4,8 +4,6 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import uz.pdp.spring_boot.dto.Dto;
-import uz.pdp.spring_boot.enums.Level;
-
 import java.time.Instant;
 
 @Getter
@@ -14,14 +12,12 @@ import java.time.Instant;
 public class TaskCreateDto implements Dto {
     private String tittle;
     private String description;
-    private Instant deadline;
-    private Level level;
+    private String level;
 
     @Builder(builderMethodName = "childBuilder")
-    public TaskCreateDto(String tittle, String description, Instant deadline, Level level) {
+    public TaskCreateDto(String tittle, String description,  String level) {
         this.tittle = tittle;
         this.description = description;
-        this.deadline = deadline;
         this.level = level;
     }
 }

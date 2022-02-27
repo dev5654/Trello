@@ -17,22 +17,21 @@ import java.time.Instant;
 @NoArgsConstructor
 public class UserUpdateDto extends GenericDto {
     private String username;
-    private String language;
     private String phone;
     private String email;
-    private String fullName;
-    private String profileImage;
-    private AuthRole role;
+    private String language;
+    //private String profileImage;
+   /* private String role;*/
 
     @Builder(builderMethodName = "childBuilder")
-    public UserUpdateDto(Long id, String username, String language, String phone, String email, String fullName, String profileImage,  AuthRole role) {
+    public UserUpdateDto(Long id, String username,/* String language,*/ String phone, String email/* String fullName,*/ /*String profileImage,*/ /* String role*/) {
         super(id);
         this.username = username;
-        this.language = language;
+        /*this.language = language;*/
         this.phone = phone;
         this.email = email;
-        this.fullName = fullName;
-        this.profileImage = profileImage;
-        this.role = role;
+//        this.fullName = fullName;
+       // this.profileImage = profileImage;
+      /*  this.role = role;*/
     }
 }

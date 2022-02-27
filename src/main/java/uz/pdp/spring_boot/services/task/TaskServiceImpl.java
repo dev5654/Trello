@@ -28,6 +28,9 @@ public class TaskServiceImpl extends AbstractService<TaskRepository, TaskMapper,
     @Override
     public Long create(TaskCreateDto createDto) {
         Task task = mapper.fromCreateDto(createDto);
+        task.setDescription(createDto.getDescription());
+        task.setTaskLevel(repository.findLevelByName(createDto.getLevel()));
+        task.setTittle(createDto.getTittle());
         task.setCreateby(1L);
         repository.save(task);
         return 1L;
@@ -41,7 +44,7 @@ public class TaskServiceImpl extends AbstractService<TaskRepository, TaskMapper,
 
     @Override
     public Void update(TaskUpdateDto updateDto) {
-        repository.update(updateDto.getTittle(), updateDto.getDescription(), updateDto.getDeadline(), updateDto.getLevel(), updateDto.getId());
+        repository.update(updateDto.getTittle(), updateDto.getDescription(), updateDto.getId());
         return null;
     }
 
