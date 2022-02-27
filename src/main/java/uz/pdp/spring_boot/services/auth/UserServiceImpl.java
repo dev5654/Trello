@@ -47,6 +47,7 @@ public class UserServiceImpl extends AbstractService<UserRepository, UserMapper,
         authUser.setProfileImage(imgPath);
         authUser.setOrganization(repository.findOrganizationById(createDto.getOrganizationId()));
         authUser.setPassword(passwordEncoder.encode(createDto.getPassword()));
+//        authUser.setActive(true);
         authUser.setRole(repository.findRoleByName(createDto.getRole()));
         repository.save(authUser);
         return authUser.getId();

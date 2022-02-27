@@ -45,7 +45,7 @@ public class AuthUser implements BaseEntity {
 
     private Timestamp created_at;
 
-    @Column(name = "is_active", nullable = false)
+    @Column(name = "is_active", nullable = true)
     private boolean active;
 
     @Column(name = "is_blocked", nullable = false)
