@@ -1,16 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:include="fragments.html :: head(title='Project list', path='/css/index.css')">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Index html one</title>
-    <link rel="stylesheet" href="./assets/css/index2.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;500;600;700&family=Red+Hat+Display&family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet">
-</head>
+<head th:include="fragments.html :: head(title='Project list', path='/css/index2.css')"></head>
 <body>
 <header>
     <main>
@@ -26,7 +16,7 @@
         <div class="link">
             <a th:href="@{/panel/admin/}">Project</a>
             <button type="button" class="btn btn-success my-3" data-toggle="modal"
-                    data-target="#createSuperAdminModal">+ Create Users
+                    data-target="#createSuperAdminModal">+ Create Members
             </button>
             <div class="modal fade" id="createSuperAdminModal" tabindex="-1" role="dialog"
                  aria-labelledby="createSuperAdminModalLabel"
@@ -34,7 +24,7 @@
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="createSuperAdminModalLabel">Create Super Admin</h5>
+                            <h5 class="modal-title" id="createSuperAdminModalLabel">Create Admin</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true" class="text-danger">&times;</span>
                             </button>
@@ -120,73 +110,67 @@
             </div>
         </nav>
 
-
         <div class="container">
-            <h2>Project</h2>
-            <h3 th:text="${project.name}">Project</h3>
-
-            <div>
-                <button type="button" class="btn btn-success my-3" data-toggle="modal"
-                        data-target="#createProjectModal">
-                    <i class="fa fa-plus"></i> + Create Task
-                </button>
-                <div class="modal fade" id="createProjectModal" tabindex="-1" role="dialog"
-                     aria-labelledby="createProjectModalLabel"
-                     aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="createProjectModalLabel">Create Project</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true" class="text-danger">&times;</span>
-                                </button>
-                            </div>
-                            <form th:action="@{/project/create/}" th:method="post" enctype="multipart/form-data">
-                                <div class="modal-body">
-                                    <div class="form-group">
-                                        <label for="name">Name</label>
-                                        <input type="text" class="form-control" id="name" name="name"/>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="tzPath">Project TZ</label>
-                                        <input type="file" class="form-control" name="tzPath" id="tzPath"/>
-                                    </div>
-                                </div>
-
-                                <div class="modal-footer">
-                                    <button type="submit" class="btn btn-success">Save</button>
-
-                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+            <h3 th:text="${project.name}" class="text-primary">Project</h3>
             <div class="contents">
                 <div class="content">
                     <div class="box">
-                        <p><b>Date added:</b> <span> 12/04/2021</span></p>
-                        <p><b>Deadline:</b><span>12/04/2021 </span></p>
-                        <p><b>Participants:</b><span>12/04/2021 </span></p>
+                        <a th:href="@{/project/delete/{id}/(id=${project.id})}"
+                           class="btn btn-outline-danger">Delete</a>
                     </div>
-                   <!-- <div class="content-box">
-                        <p>Менеджер для внутреннего пользования, предназначенный для учета статистики и трекинга задач.
-                        </p>
+                    <div class="content-box">
+                        <a th:href="@{/project/update/{id}/(id=${project.id})}"
+                           class="btn btn-outline-primary">Update</a>
                     </div>
                     <div class="boxs">
-                        <p><b>All tasks:</b> 1</p>
-                        <p><b>Done:</b> 1</p>
-                        <p><b>Frozen:</b> 1</p>
+                        <a th:href="@{/project/create/{id}/(id=${project.id})}"
+                           class="btn btn-outline-success ml-5">Add Member</a>
                     </div>
                 </div>
 
                 <div class="todoContainer">
                     <div class="todoContent-box">
                         <div class="todo-img">
-                            <p>To do</p>
-                            <img src="./assets/imges/plus-circle.png" alt="">
+                            <p>Process</p>
+                            <p>
+                                <img src="/images/plus-circle.png" type="button"
+                                     data-toggle="modal"
+                                     data-target="#createProjectModal">
+                            </p>
+                            <div class="modal fade" id="createProjectModal" tabindex="-1" role="dialog"
+                                 aria-labelledby="createProjectModalLabel"
+                                 aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="createProjectModalLabel">Create
+                                                Project</h5>
+                                            <button type="button" class="close" data-dismiss="modal"
+                                                    aria-label="Close">
+                                                <span aria-hidden="true" class="text-danger">&times;</span>
+                                            </button>
+                                        </div>
+                                        <form th:action="@{/project/create/}" th:method="post"
+                                              enctype="multipart/form-data">
+                                            <div class="modal-body">
+                                                <div class="form-group">
+                                                    <label for="name">Name</label>
+                                                    <input type="text" class="form-control" id="name"
+                                                           name="name"/>
+                                                </div>
+                                            </div>
+
+                                            <div class="modal-footer">
+                                                <button type="submit" class="btn btn-success">Save</button>
+
+                                                <button type="button" class="btn btn-danger"
+                                                        data-dismiss="modal">Close
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="todo-box">
                             <h4>CRM system design
@@ -214,7 +198,7 @@
                     </div>
                     <div class="todoContent-box">
                         <div class="todo-img">
-                            <p>To do</p>
+                            <p>Doing</p>
                         </div>
                         <div class="todo-box">
                             <h4>CRM system design
@@ -234,12 +218,12 @@
                     </div>
                     <div class="todoContent-box">
                         <div class="todo-img">
-                            <p>To do</p>
+                            <p>Completed</p>
                         </div>
                     </div>
                     <div class="todoContent-box">
                         <div class="todo-img">
-                            <p>To do</p>
+                            <p>QA</p>
                         </div>
                         <div class="todo-box">
                             <h4>CRM system design
@@ -249,9 +233,10 @@
                             <p><span>Participant:  </span>Azhar</p>
                         </div>
                     </div>
-                </div>-->
+                </div>
             </div>
         </div>
+
     </aside>
 
 </header>
@@ -274,18 +259,6 @@
         crossorigin="anonymous"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 <!--

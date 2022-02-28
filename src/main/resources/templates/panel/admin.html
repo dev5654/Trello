@@ -13,6 +13,71 @@
 
         <div class="link">
             <a th:href="@{/project/projects/}">Project</a>
+            <button type="button" class="btn btn-success my-3" data-toggle="modal"
+                    data-target="#createMemberModal">+ Create Members
+            </button>
+            <div class="modal fade" id="createMemberModal" tabindex="-1" role="dialog"
+                 aria-labelledby="createMemberModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="createMemberModalLabel">Create Member</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true" class="text-danger">&times;</span>
+                            </button>
+                        </div>
+                        <form th:action="@{/user/create/}" th:method="post"
+                              enctype="multipart/form-data">
+
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label for="username">User Name</label>
+                                    <input type="text" class="form-control" id="username" name="username"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="password">Password</label>
+                                    <input type="password" class="form-control" id="password" name="password"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="logo">profile image</label>
+                                    <input type="file" class="form-control" id="logo" name="profileImage"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone">Phone</label>
+                                    <input type="text" class="form-control" id="phone" name="phone"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email address</label>
+                                    <input type="email" class="form-control" name="email" id="email"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="language">Language</label>
+                                    <select id="language" name="language" class="form-control">
+                                        <option>UZ</option>
+                                        <option>RU</option>
+                                        <option>EN</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="role">ROLE</label>
+                                    <select id="role" name="role" class="form-control">
+                                        <!--                                <option name="role_name" value="SUPER_ADMIN">SUPER_ADMIN</option>-->
+                                        <option name="role_name" value="ADMIN">ADMIN</option>
+                                        <option name="role_name" value="MANAGER">MANAGER</option>
+                                        <option name="role_name" value="MEMBER">MEMBER</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-success">Save</button>
+
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
             <a th:href="@{/user/member/}">Member control</a>
             <a th:href="@{/user/admin/}">Admin control</a>
             <a th:href="@{/user/manager/}">Manager control</a>
@@ -56,16 +121,16 @@
                         <p>Projects</p>
                         <p>Export</p>
                     </div>
-                    <div th:each="project : ${projects}">
-                        <a th:href="@{/project/detail/{id}/(id = ${project.id})}"
-                           style="text-decoration: none">
+                    <div>
+                        <a
+                                style="text-decoration: none">
                             <div class="box">
-                                <p th:text="${project.name}"></p>
+                                <p>Name</p>
                                 <div class="box-text">
                                     </span>
                                     <span>
                                         <img th:src="@{/images/sunrise.png}" alt="">
-                                        <span th:text="${project.tzPath}"></span>
+                                        <span>Tz Path</span>
                                     </span>
                                 </div>
                             </div>
@@ -74,7 +139,7 @@
                 </div>
             </div>
 
-            <div class="content pt-5" style=" grid-template-columns: 330px 330px;">
+           <!-- <div class="content pt-5" style=" grid-template-columns: 330px 330px;">
                 <div class="content pt-5" style=" grid-template-columns: 330px 330px;!important;">
                     <div class="contents"></div>
                 </div>
@@ -82,7 +147,7 @@
                     <div class="contents"></div>
                     <div class="contents"></div>
                 </div>
-            </div>
+            </div>-->
         </div>
 
     </aside>
@@ -96,5 +161,14 @@
         main.classList.toggle("open")
     })
 </script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
 </body>
 </html>

@@ -65,27 +65,11 @@ public class UserController extends AbstractController<UserService> {
         return "admin/list";
     }*/
 
-    @PreAuthorize("hasAnyRole('SUPER_ADMIN')")
-    @RequestMapping(value = "/superAdmin/lists/", method = RequestMethod.GET)
-    public String superAdminPage(Model model) {
-        List<UserDto> all = service.getAll(new GenericCriteria());
-        List<UserDto> superAdminList = new ArrayList<>();
-        for (UserDto dto : all) {
-            if (dto.getRole().getCode().equals("SUPER_ADMIN")) {
-                superAdminList.add(dto);
-            }
-        }
-        model.addAttribute("superAdmins", superAdminList);
-        return "superAdmin/list";
-    }
-
-
-    @RequestMapping(value = "/superAdmin/detail/{id}/" , method = RequestMethod.GET)
+    @RequestMapping(value = "/superAdmin/detail/{id}/", method = RequestMethod.GET)
     public String detail(Model model, @PathVariable(name = "id") Long id) {
         model.addAttribute("superAdmin", service.get(id));
         return "superAdmin/detail";
     }
-
 
 
     @RequestMapping(value = "/user/create/", method = RequestMethod.POST)
@@ -113,6 +97,49 @@ public class UserController extends AbstractController<UserService> {
         return "user/memberList";
     }
 
+    @PreAuthorize("hasAnyRole('SUPER_ADMIN')")
+    @RequestMapping(value = "/superAdmin/lists/", method = RequestMethod.GET)
+    public String superAdminPage(Model model) {
+        List<UserDto> all = service.getAll(new GenericCriteria());
+        List<UserDto> superAdminList = new ArrayList<>();
+        for (UserDto dto : all) {
+            if (dto.getRole().getCode().equals("SUPER_ADMIN")) {
+                superAdminList.add(dto);
+            }
+        }
+        model.addAttribute("superAdmins", superAdminList);
+        return "superAdmin/list";
+    }
 
+
+    @PreAuthorize("hasAnyRole('ADMIN')")
+    @RequestMapping(value = "/user/manager/", method = RequestMethod.GET)
+    public String managerPage(Model model) {
+        List<UserDto> all = service.getAll(new GenericCriteria());
+        List<UserDto> managerList = new ArrayList<>();
+        for (UserDto dto : all) {
+            if (Objects.nonNull(dto.getRole()) && dto.getRole().getCode().equals("MANAGER")) {
+                managerList.add(dto);
+            }
+        }
+
+        model.addAttribute("managers", managerList);
+        return "user/manager";
+    }
+
+    @PreAuthorize("hasAnyRole('ADMIN')")
+    @RequestMapping(value = "/user/admin/", method = RequestMethod.GET)
+    public String adminPage(Model model) {
+        List<UserDto> all = service.getAll(new GenericCriteria());
+        List<UserDto> adminList = new ArrayList<>();
+        for (UserDto dto : all) {
+            if (Objects.nonNull(dto.getRole()) && dto.getRole().getCode().equals("ADMIN")) {
+                adminList.add(dto);
+            }
+        }
+
+        model.addAttribute("admins", adminList);
+        return "user/admin";
+    }
 }
 

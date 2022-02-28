@@ -22,6 +22,7 @@ public class ProjectController extends AbstractController<ProjectService> {
         super(service);
     }
 
+
     @PreAuthorize("hasAnyRole('ADMIN')")
     @RequestMapping(value = "projects/", method = RequestMethod.GET)
     public String orgPage(Model model) {
