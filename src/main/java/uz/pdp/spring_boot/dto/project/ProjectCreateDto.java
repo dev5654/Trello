@@ -11,7 +11,6 @@ import java.time.Instant;
 
 @Getter
 @Setter
-@Builder
 public class ProjectCreateDto implements Dto {
     private String name;
     private MultipartFile tzPath;
