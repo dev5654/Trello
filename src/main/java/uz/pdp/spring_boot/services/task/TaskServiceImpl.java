@@ -1,6 +1,5 @@
 package uz.pdp.spring_boot.services.task;
 
-<<<<<<< HEAD
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import uz.pdp.spring_boot.criteria.GenericCriteria;
