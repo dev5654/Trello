@@ -10,7 +10,7 @@ import uz.pdp.spring_boot.dto.project.ProjectCreateDto;
 import uz.pdp.spring_boot.dto.project.ProjectDto;
 import uz.pdp.spring_boot.dto.project.ProjectUpdateDto;
 import uz.pdp.spring_boot.entity.auth.AuthUser;
-import uz.pdp.spring_boot.entity.project.Project;
+import uz.pdp.spring_boot.entity.project.*;
 import uz.pdp.spring_boot.mapper.ProjectMapper;
 import uz.pdp.spring_boot.reposiroty.project.ProjectRepository;
 import uz.pdp.spring_boot.services.AbstractService;
@@ -21,7 +21,8 @@ import uz.pdp.spring_boot.utils.validators.project.ProjectValidator;
 import java.util.List;
 
 @Service
-public class ProjectServiceImpl extends AbstractService<ProjectRepository, ProjectMapper, ProjectValidator>
+public class ProjectServiceImpl extends AbstractService<ProjectRepository, ProjectMapper, ProjectValidator
+        >
         implements ProjectService {
 
     private final FileStorageService fileStorageService;
