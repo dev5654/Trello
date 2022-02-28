@@ -20,14 +20,14 @@ public class TaskController extends AbstractController<TaskService> {
         super(service);
     }
 
-    @PreAuthorize("hasAnyRole('MANAGER')")
-    @RequestMapping(value = "create/",method = RequestMethod.GET)
+    //@PreAuthorize("hasAnyRole('MANAGER')")
+    /*@RequestMapping(value = "create/",method = RequestMethod.GET)
     public String createPage() {
         return "task/create";
-    }
+    }*/
 
 
-    @PreAuthorize("hasAnyRole('MANAGER')")
+    //@PreAuthorize("hasAnyRole('MANAGER')")
     @RequestMapping(value = "create/", method = RequestMethod.POST)
     public String create(@ModelAttribute TaskCreateDto dto) {
         service.create(dto);
