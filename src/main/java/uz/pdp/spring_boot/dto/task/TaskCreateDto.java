@@ -1,5 +1,6 @@
 package uz.pdp.spring_boot.dto.task;
 
+
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
@@ -20,4 +21,5 @@ public class TaskCreateDto implements Dto {
         this.description = description;
         this.level = level;
     }
+
 }

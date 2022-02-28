@@ -1,5 +1,6 @@
 package uz.pdp.spring_boot.reposiroty.task;
 
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -23,4 +24,5 @@ public interface TaskRepository extends JpaRepository<Task, Long>, AbstractRepos
 
     @Query(value = "from  TaskLevel r where r.code=:taskLevelName")
     TaskLevel findLevelByName(String taskLevelName);
+
 }

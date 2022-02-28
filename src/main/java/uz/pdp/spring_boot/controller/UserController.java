@@ -98,7 +98,7 @@ public class UserController extends AbstractController<UserService> {
     }
 
 
-//    @PreAuthorize("hasAnyRole('ADMIN')")
+
     @RequestMapping(value = "/user/member/", method = RequestMethod.GET)
     public String memberPage(Model model) {
         List<UserDto> all = service.getAll(new GenericCriteria());
@@ -113,6 +113,20 @@ public class UserController extends AbstractController<UserService> {
         return "user/memberList";
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN')")
+    @RequestMapping(value = "/user/manager/", method = RequestMethod.GET)
+    public String managerPage(Model model) {
+        List<UserDto> all = service.getAll(new GenericCriteria());
+        List<UserDto> managerList = new ArrayList<>();
+        for (UserDto dto : all) {
+            if (Objects.nonNull(dto.getRole()) && dto.getRole().getCode().equals("MANAGER")) {
+                managerList.add(dto);
+            }
+        }
+
+        model.addAttribute("managers", managerList);
+        return "user/manager";
+    }
 
 }
 

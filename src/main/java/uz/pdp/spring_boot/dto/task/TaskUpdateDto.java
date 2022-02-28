@@ -1,14 +1,11 @@
 package uz.pdp.spring_boot.dto.task;
 
-
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import uz.pdp.spring_boot.dto.GenericDto;
 import uz.pdp.spring_boot.entity.project.ProjectColumn;
-
-import java.time.Instant;
 
 @Getter
 @Setter
@@ -29,4 +26,6 @@ public class TaskUpdateDto extends GenericDto {
         this.projectColumn = projectColumn;
         this.level = level;
     }
+
+
 }
