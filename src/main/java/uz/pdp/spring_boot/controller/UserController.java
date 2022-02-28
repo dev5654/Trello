@@ -18,6 +18,7 @@ import uz.pdp.spring_boot.services.auth.UserService;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Controller
 public class UserController extends AbstractController<UserService> {
@@ -91,19 +92,19 @@ public class UserController extends AbstractController<UserService> {
     public String userCreate(@ModelAttribute UserCreateDto dto) {
 //       dto.setOrganizationId(Long.valueOf(id));
         AuthUser authUser = ((UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUser();
-        dto.setOrganizationId(authUser.getId());
+        dto.setOrganizationId(authUser.getOrganization().getId());
         service.create(dto);
         return "redirect:/project/projects/";
     }
 
 
-    @PreAuthorize("hasAnyRole('ADMIN')")
+//    @PreAuthorize("hasAnyRole('ADMIN')")
     @RequestMapping(value = "/user/member/", method = RequestMethod.GET)
     public String memberPage(Model model) {
         List<UserDto> all = service.getAll(new GenericCriteria());
         List<UserDto> memberList = new ArrayList<>();
         for (UserDto dto : all) {
-            if (dto.getRole().getCode().equals("MEMBER")) {
+            if (Objects.nonNull(dto.getRole()) && dto.getRole().getCode().equals("MEMBER")) {
                 memberList.add(dto);
             }
         }
