@@ -15,16 +15,16 @@
 
         <div class="link">
             <a th:href="@{/panel/admin/}">Project</a>
-            <button type="button" class="btn btn-success my-3" data-toggle="modal"
-                    data-target="#createSuperAdminModal">+ Create Members
+            <!--<button type="button" class="btn btn-success my-3" data-toggle="modal"
+                    data-target="#craeteMemberModal">+ Create Members
             </button>
-            <div class="modal fade" id="createSuperAdminModal" tabindex="-1" role="dialog"
-                 aria-labelledby="createSuperAdminModalLabel"
+            <div class="modal fade" id="craeteMemberModal" tabindex="-1" role="dialog"
+                 aria-labelledby="craeteMemberModalLabel"
                  aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="createSuperAdminModalLabel">Create Admin</h5>
+                            <h5 class="modal-title" id="craeteMemberModalLabel">Create Admin</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true" class="text-danger">&times;</span>
                             </button>
@@ -64,7 +64,7 @@
                                 <div class="form-group">
                                     <label for="role">ROLE</label>
                                     <select id="role" name="role" class="form-control">
-                                        <!--                                <option name="role_name" value="SUPER_ADMIN">SUPER_ADMIN</option>-->
+                                        &lt;!&ndash;                                <option name="role_name" value="SUPER_ADMIN">SUPER_ADMIN</option>&ndash;&gt;
                                         <option name="role_name" value="ADMIN">ADMIN</option>
                                         <option name="role_name" value="MANAGER">MANAGER</option>
                                         <option name="role_name" value="MEMBER">MEMBER</option>
@@ -79,7 +79,7 @@
                         </form>
                     </div>
                 </div>
-            </div>
+            </div>-->
             <a th:href="@{/user/member/}">Member control</a>
             <a th:href="@{/user/admin/}">Admin control</a>
             <a th:href="@{/user/manager/}">Manager control</a>
@@ -149,102 +149,44 @@
                                                 <span aria-hidden="true" class="text-danger">&times;</span>
                                             </button>
                                         </div>
-                                        <form th:action="@{/task/create/}" th:method="post"
-                                              enctype="multipart/form-data">
+                                        <div class="modal-body">
+                                            <form th:action="@{/task/create/}" th:method="post"
+                                                  enctype="multipart/form-data">
 
-                                            <div class="form-group">
-                                                <label for="tittle">Tittle</label>
-                                                <input type="text" class="form-control" id="tittle" name="tittle"/>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="description">Description</label>
-                                                <input type="text" class="form-control" name="description"
-                                                       id="description"/>
-                                            </div>
-                                            <!-- <div class="form-group">
-                                                 <label for="deadline">Deadline</label>
-                                                 <input type="datetime-local" class="form-control" name="deadline" id="deadline"/>
-                                             </div>-->
+                                                <div class="form-group">
+                                                    <label for="tittle">Title</label>
+                                                    <input type="text" class="form-control" id="tittle" name="tittle"/>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="description">Description</label>
+                                                    <input type="text" class="form-control" name="description"
+                                                           id="description"/>
+                                                </div>
+                                                <!-- <div class="form-group">
+                                                     <label for="deadline">Deadline</label>
+                                                     <input type="datetime-local" class="form-control" name="deadline" id="deadline"/>
+                                                 </div>-->
 
-                                            <div class="form-group">
-                                                <label for="level">Level</label>
-                                                <select id="level" name="level" class="form-control">
-                                                    <option value="EASY" name="level">EASY</option>
-                                                    <option value="MEDIUM" name="level">MEDIUM</option>
-                                                    <option value="HARD" name="level">HARD</option>
-                                                </select>
-                                            </div>
-                                            <button type="submit" class="btn btn-primary">➕ Save</button>
-                                        </form>
+                                                <div class="form-group">
+                                                    <label for="level">Level</label>
+                                                    <select id="level" name="level" class="form-control">
+                                                        <option value="EASY" name="level">EASY</option>
+                                                        <option value="MEDIUM" name="level">MEDIUM</option>
+                                                        <option value="HARD" name="level">HARD</option>
+                                                    </select>
+                                                </div>
+                                                <button type="submit" class="btn btn-primary">➕ Save</button>
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="todo-box">
-                            <p>
-                                <img src="/images/plus-circle.png" type="button"
-                                     data-toggle="modal"
-                                     data-target="#createTaskModal">
-                            </p>
-                            <div class="modal fade" id="createTaskModal" tabindex="-1" role="dialog"
-                                 aria-labelledby="createTaskModalLabel"
-                                 aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="createTaskModalLabel">Create
-                                                Task</h5>
-                                            <button type="button" class="close" data-dismiss="modal"
-                                                    aria-label="Close">
-                                                <span aria-hidden="true" class="text-danger">&times;</span>
-                                            </button>
-                                        </div>
-                                        <form th:action="@{/task/create/}" th:method="post"
-                                              enctype="multipart/form-data">
-                                            <div class="modal-body">
-                                                <div class="form-group">
-                                                    <label for="title">Title</label>
-                                                    <input type="text" class="form-control" id="title"
-                                                           name="title"/>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="description">Description</label>
-                                                    <input type="text" class="form-control" id="description"
-                                                           name="description"/>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="deadline">Deadline</label>
-                                                    <input type="time" class="form-control" id="deadline"
-                                                           name="deadline"/>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="level">Level</label>
-                                                    <select id="level" name="level" class="form-control">
-                                                        <option>EASY</option>
-                                                        <option>MEDIUM</option>
-                                                        <option>HARD</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-
-                                            <div class="modal-footer">
-                                                <button type="submit" class="btn btn-success">Save</button>
-
-                                                <button type="button" class="btn btn-danger"
-                                                        data-dismiss="modal">Close
-                                                </button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <h4>CRM system design
-
-                                <button class="medium">Medium</button>
-                            </h4>
-                            <p><span>Participant:  </span>Azhar</p>
-                            <p><span>Participant:  </span>Azhar</p>
+                        <div class="todo-box" th:each="task,iter :  ${tasks}">
+                            <h4 th:value="${task.tittle}"></h4>
+                            <button class="medium" th:value="${task.level}"></button>
+                            <h3 th:value="${task.description}"></h3>
+                            <p th:text="${iter.count}"><span>Description:  </span>Azhar</p>
                         </div>
 
                     </div>
@@ -332,7 +274,7 @@
         <div class="link">
             <a th:href="@{/panel/admin/}">Project</a>
             <button type="button" class="btn btn-success my-3" data-toggle="modal"
-                    data-target="#createSuperAdminModal">+ Create Users
+                    data-target="#craeteMemberModal">+ Create Users
             </button>
             <div class="modal fade" id="createSuperAdminModal" tabindex="-1" role="dialog"
                  aria-labelledby="createSuperAdminModalLabel"

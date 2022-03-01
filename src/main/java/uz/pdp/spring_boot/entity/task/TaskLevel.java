@@ -21,5 +21,4 @@ public class TaskLevel implements BaseEntity {
 
     @Column(name = "code")
     private String code;
-
 }

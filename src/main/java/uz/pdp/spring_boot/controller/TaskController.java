@@ -20,18 +20,17 @@ public class TaskController extends AbstractController<TaskService> {
         super(service);
     }
 
-    @PreAuthorize("hasAnyRole('MANAGER')")
-    @RequestMapping(value = "create/",method = RequestMethod.GET)
-    public String createPage() {
-        return "task/create";
-    }
+//    @RequestMapping(value = "create/", method = RequestMethod.GET)
+//    public String createPage() {
+//        return "task/create";
+//    }
 
 
-    @PreAuthorize("hasAnyRole('MANAGER')")
+    @PreAuthorize("hasAnyRole('MANAGER','ADMIN')")
     @RequestMapping(value = "create/", method = RequestMethod.POST)
     public String create(@ModelAttribute TaskCreateDto dto) {
         service.create(dto);
-        return "redirect:/";
+        return "redirect:/project/projects/";
     }
 
     @RequestMapping(value = "delete/{id}", method = RequestMethod.GET)
@@ -58,7 +57,6 @@ public class TaskController extends AbstractController<TaskService> {
         return "redirect:/task/list";
     }
 
-
     @RequestMapping(value = "detail/{id}")
     public String detail(Model model, @PathVariable(name = "id") Long id) {
         model.addAttribute("task", service.get(id));
@@ -70,5 +68,4 @@ public class TaskController extends AbstractController<TaskService> {
         model.addAttribute("tasks", service.getAll(new GenericCriteria()));
         return "task/list";
     }
-
 }

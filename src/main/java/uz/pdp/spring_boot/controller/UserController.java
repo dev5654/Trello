@@ -104,7 +104,7 @@ public class UserController extends AbstractController<UserService> {
         List<UserDto> all = service.getAll(new GenericCriteria());
         List<UserDto> memberList = new ArrayList<>();
         for (UserDto dto : all) {
-            if (Objects.nonNull(dto.getRole()) && dto.getRole().getCode().equals("MEMBER")) {
+            if (Objects.nonNull(dto.getRole()) && dto.getRole().getCode().equals("MEMBER") && !dto.getRole().getCode().equals("SUPER_ADMIN")) {
                 memberList.add(dto);
             }
         }

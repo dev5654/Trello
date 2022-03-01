@@ -12,24 +12,25 @@ import uz.pdp.spring_boot.criteria.GenericCriteria;
 import uz.pdp.spring_boot.dto.project.ProjectCreateDto;
 import uz.pdp.spring_boot.dto.project.ProjectUpdateDto;
 import uz.pdp.spring_boot.services.project.ProjectService;
-
-
+import uz.pdp.spring_boot.services.task.TaskService;
 
 
 @Controller
 @RequestMapping("/project/*")
 public class ProjectController extends AbstractController<ProjectService> {
 
+    protected final TaskService taskService;
 
     @Autowired
-    public ProjectController(ProjectService service) {
+    public ProjectController(ProjectService service, TaskService taskService) {
         super(service);
+        this.taskService = taskService;
     }
 
 
     @PreAuthorize("hasAnyRole('ADMIN')")
     @RequestMapping(value = "projects/", method = RequestMethod.GET)
-    public String orgPage(Model model) {
+    public String projectPage(Model model) {
         model.addAttribute("projects", service.getAll(new GenericCriteria()));
         return "project/list";
     }
@@ -39,6 +40,7 @@ public class ProjectController extends AbstractController<ProjectService> {
     public String createPage() {
         return "project/create";
     }
+
     @PreAuthorize("hasAnyRole('ADMIN')")
     @RequestMapping(value = "create/", method = RequestMethod.POST)
     public String create(@ModelAttribute ProjectCreateDto dto) {
@@ -55,7 +57,7 @@ public class ProjectController extends AbstractController<ProjectService> {
     @RequestMapping(value = "delete/{id}", method = RequestMethod.POST)
     public String delete(@PathVariable(name = "id") Long id) {
         service.delete(id);
-        return "redirect:/";
+        return "redirect:/project/projects/";
     }
 
     @PreAuthorize("hasAnyRole('ADMIN')")
@@ -76,6 +78,7 @@ public class ProjectController extends AbstractController<ProjectService> {
     @RequestMapping(value = "detail/{id}")
     public String detail(Model model, @PathVariable(name = "id") Long id) {
         model.addAttribute("project", service.get(id));
+        model.addAttribute("tasks", taskService.getAll(new GenericCriteria()));
         return "project/detail";
     }
 

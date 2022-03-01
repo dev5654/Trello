@@ -33,7 +33,6 @@ public class Task implements BaseEntity {
     private String description;
 
 
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "project_column_id")
     private ProjectColumn projectColumn;
