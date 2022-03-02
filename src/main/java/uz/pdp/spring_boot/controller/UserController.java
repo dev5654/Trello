@@ -80,12 +80,29 @@ public class UserController extends AbstractController<UserService> {
     }
 
 
-    @RequestMapping(value = "/superAdmin/detail/{id}/" , method = RequestMethod.GET)
+    @RequestMapping(value = "/superAdmin/detail/{id}/", method = RequestMethod.GET)
     public String detail(Model model, @PathVariable(name = "id") Long id) {
         model.addAttribute("superAdmin", service.get(id));
         return "superAdmin/detail";
     }
 
+    @RequestMapping(value = "/admin/detail/{id}/", method = RequestMethod.GET)
+    public String adminDetail(Model model, @PathVariable(name = "id") Long id) {
+        model.addAttribute("admin", service.get(id));
+        return "admin/detail";
+    }
+
+    @RequestMapping(value = "/manager/detail/{id}/", method = RequestMethod.GET)
+    public String managerDetail(Model model, @PathVariable(name = "id") Long id) {
+        model.addAttribute("manager", service.get(id));
+        return "manager/detail";
+    }
+
+    @RequestMapping(value = "/member/detail/{id}/", method = RequestMethod.GET)
+    public String memberDetail(Model model, @PathVariable(name = "id") Long id) {
+        model.addAttribute("member", service.get(id));
+        return "member/detail";
+    }
 
 
     @RequestMapping(value = "/user/create/", method = RequestMethod.POST)
@@ -96,7 +113,6 @@ public class UserController extends AbstractController<UserService> {
         service.create(dto);
         return "redirect:/project/projects/";
     }
-
 
 
     @RequestMapping(value = "/user/member/", method = RequestMethod.GET)
@@ -126,6 +142,21 @@ public class UserController extends AbstractController<UserService> {
 
         model.addAttribute("managers", managerList);
         return "user/manager";
+    }
+
+    @PreAuthorize("hasAnyRole('ADMIN')")
+    @RequestMapping(value = "/user/admin/", method = RequestMethod.GET)
+    public String adminPage(Model model) {
+        List<UserDto> all = service.getAll(new GenericCriteria());
+        List<UserDto> adminList = new ArrayList<>();
+        for (UserDto dto : all) {
+            if (Objects.nonNull(dto.getRole()) && dto.getRole().getCode().equals("ADMIN")) {
+                adminList.add(dto);
+            }
+        }
+
+        model.addAttribute("admins", adminList);
+        return "user/admin";
     }
 
 }

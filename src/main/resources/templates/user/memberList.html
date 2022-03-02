@@ -51,7 +51,7 @@
         </nav>
         <div class="container" style="width:100%;">
             <button type="button" class="btn btn-success my-3" data-toggle="modal"
-                    data-target="#createMemberModal">+ Create Members
+                    data-target="#createMemberModal">+ Create Member
             </button>
             <div class="modal fade" id="createMemberModal" tabindex="-1" role="dialog"
                  aria-labelledby="createMemberModalLabel"
@@ -155,7 +155,7 @@
                         <p>Export</p>
                     </div>
                     <div th:each="member : ${members}">
-                        <a th:href="@{/superAdmin/detail/{id}/(id= ${member.id})}"
+                        <a th:href="@{/member/detail/{id}/(id= ${member.id})}"
                            style="text-decoration: none">
                             <div class="box">
                                 <p th:text="${member.username}"></p>

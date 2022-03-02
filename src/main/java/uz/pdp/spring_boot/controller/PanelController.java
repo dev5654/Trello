@@ -24,19 +24,15 @@ public class PanelController extends AbstractController<ProjectService> {
         super(service);
     }
 
-//    @RequestMapping(value = "superAdmin/", method = RequestMethod.GET)
-//    public String orgPage() {
-//        return "panel/superAdmin";
-//    }
+    @PreAuthorize("hasAnyRole('SUPER_ADMIN')")
+    @RequestMapping(value = "superAdmin/", method = RequestMethod.GET)
+    public String orgPage(Model model) {
+        model.addAttribute("projects", service.getAll(new GenericCriteria()));
+        return "panel/superAdmin";
+    }
 
-//    @RequestMapping(value = "admin/", method = RequestMethod.GET)
-//    public String projectPage(Model model) {
-//        model.addAttribute("project", service.getAll(new GenericCriteria()));
-//        return "panel/admin";
-//    }
-
-    @PreAuthorize("hasAnyRole('ADMIN')")
-    @RequestMapping(value = "admin/", method = RequestMethod.GET)
+    @PreAuthorize("hasAnyRole('SUPER_ADMIN')")
+    @RequestMapping(value = "/", method = RequestMethod.GET)
     public String projectPage(Model model) {
         model.addAttribute("projects", service.getAll(new GenericCriteria()));
         return "panel/admin";
