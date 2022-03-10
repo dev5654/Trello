@@ -20,6 +20,7 @@ public class TaskServiceImpl extends AbstractService<TaskRepository, TaskMapper,
         implements TaskService {
 
 
+
     @Autowired
     protected TaskServiceImpl(TaskRepository repository, TaskMapper mapper, TaskValidator validator, BaseUtils baseUtils) {
         super(repository, mapper, validator, baseUtils);

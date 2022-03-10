@@ -22,15 +22,15 @@ public class ProjectController extends AbstractController<ProjectService> {
     protected final TaskService taskService;
 
     @Autowired
-    public ProjectController(ProjectService service, TaskService taskService) {
+    public ProjectController(ProjectService service, TaskService taskService, TaskService taskService1) {
         super(service);
-        this.taskService = taskService;
+        this.taskService = taskService1;
     }
 
 
     @PreAuthorize("hasAnyRole('ADMIN')")
     @RequestMapping(value = "projects/", method = RequestMethod.GET)
-    public String projectPage(Model model) {
+    public String orgPage(Model model) {
         model.addAttribute("projects", service.getAll(new GenericCriteria()));
         return "project/list";
     }
@@ -40,7 +40,6 @@ public class ProjectController extends AbstractController<ProjectService> {
     public String createPage() {
         return "project/create";
     }
-
     @PreAuthorize("hasAnyRole('ADMIN')")
     @RequestMapping(value = "create/", method = RequestMethod.POST)
     public String create(@ModelAttribute ProjectCreateDto dto) {
@@ -57,7 +56,7 @@ public class ProjectController extends AbstractController<ProjectService> {
     @RequestMapping(value = "delete/{id}", method = RequestMethod.POST)
     public String delete(@PathVariable(name = "id") Long id) {
         service.delete(id);
-        return "redirect:/project/projects/";
+        return "redirect:/";
     }
 
     @PreAuthorize("hasAnyRole('ADMIN')")

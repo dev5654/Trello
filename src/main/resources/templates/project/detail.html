@@ -251,11 +251,11 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="todo-box" th:each="task,iter :  ${tasks}">
-                            <h4 th:value="${task.tittle}"></h4>
-                            <button class="medium" th:value="${task.level}"></button>
-                            <h3 th:value="${task.description}"></h3>
-                            <p th:text="${iter.count}"><span>Description:  </span>Azhar</p>
+                            <h4 th:text="${task.tittle}"></h4>
+                            <button class="medium" th:text="${task.level}"></button>
+                            <h3 th:text="${task.description}"></h3>
                         </div>
 
                     </div>
@@ -343,7 +343,7 @@
         <div class="link">
             <a th:href="@{/panel/admin/}">Project</a>
             <button type="button" class="btn btn-success my-3" data-toggle="modal"
-                    data-target="#craeteMemberModal">+ Create Users
+                    data-target="#createSuperAdminModal">+ Create Users
             </button>
             <div class="modal fade" id="createSuperAdminModal" tabindex="-1" role="dialog"
                  aria-labelledby="createSuperAdminModalLabel"

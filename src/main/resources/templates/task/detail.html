@@ -12,7 +12,6 @@
             <div class="col-6 offset-3">
                 <p class="h4" th:text="${task.tittle}"></p>
                 <p class="h4" th:text="${task.description}"></p>
-                <p class="h4" th:text="${task.deadline}"></p>
                 <p class="h4" th:text="${task.level}"></p>
                 <form method="get" th:action="@{/task/list}">
                     <button type="submit" class="btn btn-warning">Back</button>
